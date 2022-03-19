@@ -1,48 +1,47 @@
 def tampil(data):
   if bool(data.items()) == False:
+    print('---------- INFO ------------')
     print('Data kosong')
     print('Mohon tambah data terlebih dahulu')
   else:
-    for simpul_id, simpul_info in data.items():
-      print("\nId Mahasiswa:", simpul_id)
-      print(simpul_info['kode'] + ' : ' +  simpul_info['nama'])
+    for m_id, m_info in data.items():
+      print("\nId Mahasiswa:", m_id)
+      print(m_info['kode'] + ' : ' +  m_info['nama'])
   print()
 
-def tambah(data):
-  if bool(data.items()) == False:
-    nextSimpul = 'simpul_1'
-  else:
-    last_key = list(data.keys())[-1]
-    explode = last_key.split("_")
-    nextSimpul = explode[0] + '_' + str(int(explode[1]) + 1)
+def tambah(data, next_id):
+  # if bool(data.items()) == False:
+  #   next_id = 1
+  # else:
+  #   last_key = list(data.keys())[-1]
+  #   next_id = last_key + 1
 
   kode = input('Masukkan kode: ')
   nama = input('Masukkan nama: ')
-  data[nextSimpul] = {}
-  data[nextSimpul]['kode'] = kode.upper()
-  data[nextSimpul]['nama'] = nama
+  data[next_id] = {}
+  data[next_id]['kode'] = kode.upper()
+  data[next_id]['nama'] = nama
   print(f'Berhasil menambahkan data dengan kode {kode.upper()} dan nama {nama}')
   print()
+  return next_id
 
 def temukan(data):
   if bool(data.items()) == False:
+    print('---------- INFO ------------')
     print('Data kosong')
     print('Mohon tambah data terlebih dahulu')
   else:
-    reconfirm = True
-    while reconfirm:
-      search_filter = input('Anda ingin menemukan data berdasarkan apa (kode atau nama): ')
-      search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
-      reconfirm = False
+    search_filter = input('Anda ingin menemukan data berdasarkan apa (kode atau nama): ')
+    search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
 
     exist = False
-    for simpul_id, simpul_info in data.items():
-      if (search_filter == 'kode' and simpul_info['kode'] == search_key) or (search_filter == 'nama' and simpul_info['nama'] == search_key):
-        simpul_ke = simpul_id
-        kode      = simpul_info['kode']
-        nama      = simpul_info['nama']
+    for m_id, m_info in data.items():
+      if (search_filter == 'kode' and m_info['kode'].lower() == search_key) or (search_filter == 'nama' and m_info['nama'].lower() == search_key):
+        kode      = m_info['kode']
+        nama      = m_info['nama']
         exist     = True
-      
+    
+    print('---------- INFO ------------')
     print(f'Pencarian {search_key}')
     print('Hasil Pencarian:')
     if exist:
@@ -53,35 +52,29 @@ def temukan(data):
 
 def hapus(data):
   if bool(data.items()) == False:
+    print('---------- INFO ------------')
     print('Data kosong')
     print('Mohon tambah data terlebih dahulu')
   else:
-    ingin_hapus = True
-    while ingin_hapus:
-      search_filter = input('Anda ingin menghapus data berdasarkan apa (kode atau nama): ')
-      if search_filter != 'kode' and search_filter != 'nama':
-        print('Pilihan tidak tersedia')
-      else:
-        search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
-        reconfirm = False
+    search_filter = input('Anda ingin menghapus data berdasarkan apa (kode atau nama): ')
+    search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
 
     exist = False
-    for simpul_id, simpul_info in data.items():
-      if search_filter == 'kode' and simpul_info['kode'] == search_key:
-        simpul_ke = simpul_id
-        nama      = simpul_info['nama']
-        exist     = True
-      if search_filter == 'nama' and simpul_info['nama'] == search_key:
-        simpul_ke = simpul_id
-        kode      = simpul_info['kode']
+    for m_id, m_info in data.items():
+      if (search_filter == 'kode' and m_info['kode'].lower() == search_key) or (search_filter == 'nama' and m_info['nama'].lower() == search_key):
+        id_ke     = m_id
+        kode      = m_info['kode']
+        nama      = m_info['nama']
         exist     = True
     
+    print('---------- INFO ------------')
     if exist == True:
-      data.pop(simpul_ke)
+      data.pop(id_ke)
       print(f'Berhasil menghapus data {search_key}')
     else:
       print('Data tidak ditemukan')
   print()
+  return id_ke
 
 def pilihMenu():
   print('Menu:')
@@ -96,29 +89,34 @@ def pilihMenu():
 def main():
   print('---- Program CRUD (LINKED LIST) ----')
   dictionary_mahasiswa = {
-    'simpul_1' : {
-      'kode'  : 'AZL',
-      'nama'  : 'Azrila'
-    },
-    'simpul_2' : {
-      'kode'  : 'AQM',
-      'nama'  : 'Aqmal'
-    },
-    'simpul_3' : {
-      'kode'  : 'SKR',
-      'nama'  : 'Sekar'
-    },
-    'simpul_4' : {
-      'kode'  : 'CCP',
-      'nama'  : 'Cecep'
-    },
+    # 1 : {
+    #   'kode'  : 'AZL',
+    #   'nama'  : 'Azrila'
+    # },
+    # 2 : {
+    #   'kode'  : 'AQM',
+    #   'nama'  : 'Aqmal'
+    # },
+    # 3 : {
+    #   'kode'  : 'SKR',
+    #   'nama'  : 'Sekar'
+    # },
+    # 4 : {
+    #   'kode'  : 'CCP',
+    #   'nama'  : 'Cecep'
+    # },
   }
 
+  next_id = 0
   selesai = False
   while selesai == False:
     pilihan = pilihMenu()
     if pilihan == '1': # Tambah Data
-      tambah(dictionary_mahasiswa)
+      if bool(dictionary_mahasiswa.items()) == False:
+        next_id = 1
+      else:
+        next_id += 1
+      next_id = tambah(dictionary_mahasiswa, next_id)
     elif pilihan == '2': # Hapus Data
       hapus(dictionary_mahasiswa)
     elif pilihan == '3': # Temukan Data

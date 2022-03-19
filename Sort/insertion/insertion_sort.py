@@ -1,0 +1,1 @@
+print('ini untuk insertion sort')

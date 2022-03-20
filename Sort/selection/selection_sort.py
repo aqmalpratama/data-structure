@@ -1,22 +1,20 @@
-def insertionSort(array):
+def selectionSort(array, size):
+  for step in range(size):
+    min_idx = step
 
-  for step in range(1, len(array)):
-      key = array[step]
-      j = step - 1
+    for i in range(step + 1, size):
+      # to sort in descending order, change > to < in this line
+      # select the minimum element in each loop
+      if array[i] < array[min_idx]:
+        min_idx = i
       
-      # Compare key with each element on the left of it until an element smaller than it is found
-      # For descending order, change key<array[j] to key>array[j].        
-      while j >= 0 and key < array[j]:
-          array[j + 1] = array[j]
-          j = j - 1
-      
-      # Place key at after the element just smaller than it.
-      array[j + 1] = key
+    # put min at the correct position
+    (array[step], array[min_idx]) = (array[min_idx], array[step])
 
 # data = [-2, 45, 0, 11, -9]
 ingin_lanjut = True
 while ingin_lanjut:
-  print('------ Program Insertion Sort ------')
+  print('------ Program Selection Sort ------')
   print('* CATATAN *')
   print('Mohon masukkan angka dengan tanda koma sebagai pemisah. Jika dirasa sudah cukup, maka tekan enter untuk melakukan proses pengurutan angka.')
   print('Contoh memasukkan angka : 21, 32, 17, 2, 51')
@@ -26,7 +24,7 @@ while ingin_lanjut:
   for i in range(len(data)):
     new_data.append(int(data[i]))
 
-  insertionSort(new_data)
+  selectionSort(new_data, len(new_data))
   print('Hasil: ')
   for i in range(len(new_data)):
     if i != len(new_data) - 1:

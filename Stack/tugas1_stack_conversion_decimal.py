@@ -27,7 +27,7 @@ def decimalToBinary(angka):
     angka = angka // 2
   while isEmpty(stack) != True:
     resConversion = resConversion + str(pop(stack))
-  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan hexadesimal adalah {resConversion}"
+  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan biner adalah {resConversion}"
   return txt
 
 def decimalToOctal(angka):
@@ -39,7 +39,7 @@ def decimalToOctal(angka):
     angka = angka // 8
   while isEmpty(stack) != True:
     resConversion = resConversion + str(pop(stack))
-  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan hexadesimal adalah {resConversion}"
+  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan oktal adalah {resConversion}"
   return txt
 
 def decimalToHexadecimal(angka):
@@ -92,6 +92,6 @@ def main():
     else:
       print('* Peringatan *')
       print('Bilangan desimal tidak boleh kosong')
-      print('Program dijalankan kembali')
+      print('Program dijalankan kembali\n')
 
 main()

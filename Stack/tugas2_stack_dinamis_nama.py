@@ -32,11 +32,7 @@ def main():
       print(f'\nKelas matkul SDA menampung sebanyak {maksimal} mahasiswa')
       for i in range(maksimal):
         nama = input(f'Masukkan nama mahasiswa ke-{i+1}: ')
-        if nama:
-          push(mahasiswa, nama)
-        else:
-          print('* Peringatan *')
-          print(f'Nama tidak boleh kosong')          
+        push(mahasiswa, nama)
         
       print('Ternyata ada mahasiswa telat yang ingin mendaftar kelas matkul SDA')
       nama = input('Masukkan nama mahasiswa: ')
@@ -68,7 +64,6 @@ def main():
           print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia.')
           print('Mohon ketik dengan pilihan yang tersedia.')
           reconfirm = True
-
     else:
       print('* Peringatan *')
       print('Jumlah maksimal mahasiswa tidak boleh kosong.')

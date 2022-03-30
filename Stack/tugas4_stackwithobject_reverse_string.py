@@ -33,10 +33,9 @@ def programMembalikString():
 ---------------- Selamat Datang ----------------
 --- Program untuk membalik kalimat atau kata ---
 ================================================
-  
   """)
   print(48*"=")
-  input_user = input("Masukan kata atau kalimat: ")
+  input_user = input("Masukkan kata atau kalimat: ")
   if input_user == "":
     return
   print(48*"=")
@@ -55,6 +54,7 @@ def main():
       feedback = input("Apakah ingin menjalankan program ini lagi? (Y/N): ")
       if feedback in yesList or feedback in noList:
         stateTry = False
+        break
       print(48*"=")
       print("Perintah tidak sesuai!")
       print("Silahkan coba kembali!")

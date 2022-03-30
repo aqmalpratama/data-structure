@@ -19,4 +19,52 @@ class Stack:
     
 def reverseStringStack(string):
   length = len(string)
-  stack = createStack()
+  stack = Stack()
+  for i in range(length):
+    stack.push(string[i])
+  string = ""
+  for i in range(length):
+    string += stack.pop()
+  return string
+
+def programMembalikString():
+  print("""
+================================================
+---------------- Selamat Datang ----------------
+--- Program untuk membalik kalimat atau kata ---
+================================================
+  
+  """)
+  print(48*"=")
+  input_user = input("Masukan kata atau kalimat: ")
+  if input_user == "":
+    return
+  print(48*"=")
+  print(f"Kalimat yang dimasukan oleh user : {input_user}")
+  print(f"Kalimat yang setelah dibalik     : {reverseStringStack(input_user)}")
+  print(48*"=")
+
+def main():
+  state = True
+  while state:
+    programMembalikString()
+    yesList = ["Y", 'y', 1]
+    noList = ["N", 'n', 0]
+    stateTry = True
+    while stateTry:
+      feedback = input("Apakah ingin menjalankan program ini lagi? (Y/N): ")
+      if feedback in yesList or feedback in noList:
+        stateTry = False
+      print(48*"=")
+      print("Perintah tidak sesuai!")
+      print("Silahkan coba kembali!")
+      print(48*"=")
+    if feedback in yesList:
+      state = True
+    elif feedback in noList:
+      state = False
+  print(48*"=")
+  print('Terimakasih telah menggunakan program ini')
+  print(48*"=")
+
+main()

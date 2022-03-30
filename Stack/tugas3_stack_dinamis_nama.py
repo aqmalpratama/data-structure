@@ -25,15 +25,17 @@ def main():
   mahasiswa = createStack()
   cobaLagi = True
   while cobaLagi == True:
-    print('--- Program Input Nama Secara Dinamis ---')
+    print('\n--------- Program Input Nama Secara Dinamis --------------')
     maksimal = int(input('Masukkan maksimal jumlah mahasiswa yang dapat ditampung pada matkul SDA: '))
     if maksimal > 0:
       for i in range(maksimal):
-        nama = input('Masukkan nama mahasiswa: ')
+        nama = input(f'Masukkan nama mahasiswa ke-{i+1} : ')
         push(mahasiswa, nama)
+
       print(f"\nDaftar mahasiswa pada matkul SDA: ")
       for i in range(maksimal):
-        print(pop(mahasiswa))
+        print(f'Nama mahasiswa ke-{i+1} : {pop(mahasiswa)}')
+        
       reconfirm = True
       while reconfirm == True:
         print('\n--- Pilihan ---')
@@ -54,7 +56,7 @@ def main():
           reconfirm = True
     else:
       print('* Peringatan *')
-      print('Jumlah mahasiswa tidak boleh kosong.')
+      print('Jumlah maksimal mahasiswa tidak boleh kosong.')
 
 main()
     

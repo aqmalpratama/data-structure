@@ -31,9 +31,17 @@ def main():
   cobaLagi = 1
   while cobaLagi:
     print("--- Program Membalik Kata atau Kalimat ---")
-    inputString = input("Masukkan kata atau kalimat: ")
+    kata_tidak_kosong = True
+    while kata_tidak_kosong:
+      inputString = input("Masukkan kata atau kalimat: ")
+      if inputString:
+        kata_tidak_kosong = False
+      else:
+        print('Kata atau kalimat tidak boleh kosong.')
+        
     print(f"Kalimat yang diinput user : {inputString}")
     print(f"Kalimat yang telah dibalik : {reverseStringStack(inputString)}")
+
     reconfirm = True
     while reconfirm == True:
       print('\n--- Pilihan ---')

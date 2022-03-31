@@ -37,6 +37,8 @@ def programMembalikString():
   print(48*"=")
   input_user = input("Masukkan kata atau kalimat: ")
   if input_user == "":
+    print("\nTidak ada data yang dimasukkan!")
+    print(48*"=")
     return
   print(48*"=")
   print(f"Kalimat yang dimasukan oleh user : {input_user}")
@@ -56,7 +58,7 @@ def main():
         stateTry = False
         break
       print(48*"=")
-      print("Perintah tidak sesuai!")
+      print("\nPerintah tidak sesuai!")
       print("Silahkan coba kembali!")
       print(48*"=")
     if feedback in yesList:

@@ -38,7 +38,7 @@ def programMembalikString():
   input_user = input("Masukkan kata atau kalimat: ")
   if input_user == "":
     print("\nTidak ada data yang dimasukkan!")
-    print(50*"=")
+    print(48*"=")
     return
   print(48*"=")
   print(f"Kalimat yang dimasukan oleh user : {input_user}")

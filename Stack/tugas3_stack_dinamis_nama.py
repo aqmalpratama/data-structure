@@ -58,10 +58,10 @@ def main():
             reconfirm = True
       else:
         print('* Peringatan *')
-        print('Jumlah maksimal mahasiswa tidak boleh bernilai 0.')
+        print('Jumlah maksimal mahasiswa harus lebih dari 0.')
     else:
       print('* Peringatan *')
-      print('Jumlah maksimal mahasiswa tidak boleh kosong.')
+      print('Jumlah maksimal mahasiswa harus diisi.')
 
 main()
     

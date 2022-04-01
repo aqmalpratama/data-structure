@@ -62,7 +62,7 @@ class Command:
       print(50*"=")
       return
     self.saveStatus = True
-    print(f"Daftar data yang telah disimpan berjumlah {self.count}")
+    print(f"> Daftar data yang telah disimpan berjumlah {self.count}")
     print(50*"=")
     count = 1
     while self.stack.is_empty() != True:

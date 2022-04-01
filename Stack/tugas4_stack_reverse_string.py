@@ -7,7 +7,7 @@ def size(stack):
 
 def isEmpty(stack):
   if size(stack) == 0:
-    return true
+    return True
 
 def push(stack, item):
   stack.append(item)

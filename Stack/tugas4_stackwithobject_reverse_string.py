@@ -28,13 +28,6 @@ def reverseStringStack(string):
   return string
 
 def programMembalikString():
-  print("""
-================================================
----------------- Selamat Datang ----------------
---- Program untuk membalik kalimat atau kata ---
-================================================
-  """)
-  print(48*"=")
   input_user = input("Masukkan kata atau kalimat: ")
   if input_user == "":
     print("\nTidak ada data yang dimasukkan!")
@@ -42,10 +35,17 @@ def programMembalikString():
     return
   print(48*"=")
   print(f"Kalimat yang dimasukan oleh user : {input_user}")
-  print(f"Kalimat yang setelah dibalik     : {reverseStringStack(input_user)}")
+  print(f"Kalimat setelah dibalik         : {reverseStringStack(input_user)}")
   print(48*"=")
 
 def main():
+  print("""
+================================================
+---------------- Selamat Datang ----------------
+--- Program untuk membalik kalimat atau kata ---
+================================================
+  """)
+  print(48*"=")
   state = True
   while state:
     programMembalikString()

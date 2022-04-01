@@ -71,14 +71,13 @@ class Command:
     print(50*"=")
 
   def delete(self, data = 1):
-    print(50*"=")
     if self.stack.is_empty():
       print("> Tidak ada data yang bisa dihapus!")
       print(50*"=")
       return
     for i in range(data):
       temp = self.stack.pop()
-      print(f"Data: {temp} dihapus!")
+      print(f"> Data: {temp} dihapus!")
     print(50*"=")
 
 def programController():

@@ -28,8 +28,7 @@ class Command:
 
   def start(self):
     self.startStatus = True
-    print(50*"=")
-    print("Masukan Data Secara Manual!")
+    print("\nMasukan Data Secara Manual!")
     print(50*"=")
     count = 1
     ableCommand = ["/start", "/save", "/delete"]
@@ -45,7 +44,7 @@ class Command:
         self.save(count)
         return
       elif user_input == "/delete":
-        delete_count = int(input("Masukkan jumlah data yang ingin dihapus : "))
+        delete_count = int(input("\nMasukkan jumlah data yang ingin dihapus : "))
         self.delete(delete_count)
         count-=delete_count+1
       else:
@@ -54,15 +53,15 @@ class Command:
   def save(self, count = 0):
     self.count = count
     if self.startStatus == False:
-      print("> Program belum dimulai!")
+      print("\n> Program belum dimulai!")
       print(50*"=")
       return
     if self.stack.is_empty():
-      print("> Tidak ada data yang bisa disimpan!")
+      print("\n> Tidak ada data yang bisa disimpan!")
       print(50*"=")
       return
     self.saveStatus = True
-    print(f"> Daftar data yang telah disimpan berjumlah {self.count}")
+    print(f"\n> Daftar data yang telah disimpan berjumlah {self.count}")
     print(50*"=")
     count = 1
     while self.stack.is_empty() != True:
@@ -78,11 +77,11 @@ class Command:
     for i in range(data):
       temp = self.stack.pop()
       print(f"> Data: {temp} dihapus!")
-    print(50*"=")
+    print(50*"=", "\n")
 
 def programController():
   ableCommand = ["/start", "/save", "/delete"]
-  user_command = input("Masukan Perintah: ")
+  user_command = input("\nMasukan Perintah: ")
   if user_command not in ableCommand:
     print("> Perintah tidak sesuai!")
     print(50*"=")
@@ -96,8 +95,7 @@ def programController():
     command.delete()
 
 def main():
-  print("""
-==================================================
+  print("""==================================================
 ----------------- Selamat Datang -----------------
 ------- Program Input Nama Secara Dinamis --------
 ==================================================
@@ -106,8 +104,7 @@ def main():
     /save         : untuk menghentikan program dan 
                     menampilkan data
     /delete       : untuk menghapus data terakhir
-==================================================
-  """)
+==================================================""")
   state = True
   stateTry = True
   while state:
@@ -116,11 +113,10 @@ def main():
     noList = ["N", 'n', "0"]
     stateTry = True
     while stateTry:
-      feedback = input("Apakah ingin menjalankan program ini lagi? (Y/N): ")
+      feedback = input("\nApakah ingin menjalankan program ini lagi? (Y/N): ")
       if feedback in yesList or feedback in noList:
         stateTry = False
         break
-      print(50*"=")
       print("Perintah tidak sesuai!")
       print("Silahkan coba kembali!")
       print(50*"=")

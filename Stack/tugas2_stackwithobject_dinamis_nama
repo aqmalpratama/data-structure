@@ -32,8 +32,13 @@ class Command:
     print("Masukan Data Secara Manual!")
     print(50*"=")
     count = 1
+    ableCommand = ["/start", "/save", "/delete"]
     while self.saveStatus == False:
       user_input = input(f"Data ke-{count}: ")
+      if user_input[0] == "/":
+        if user_input not in ableCommand:
+          print("Perintah tidak ditemukan!")
+          continue
       count+=1
       if user_input == "/save":
         count-=2
@@ -48,13 +53,12 @@ class Command:
 
   def save(self, count = 0):
     self.count = count
-    print(50*"=")
     if self.startStatus == False:
-      print("Program belum dimulai!")
+      print("> Program belum dimulai!")
       print(50*"=")
       return
     if self.stack.is_empty():
-      print("Tidak ada data yang bisa disimpan!")
+      print("> Tidak ada data yang bisa disimpan!")
       print(50*"=")
       return
     self.saveStatus = True
@@ -69,7 +73,7 @@ class Command:
   def delete(self, data = 1):
     print(50*"=")
     if self.stack.is_empty():
-      print("Tidak ada data yang bisa dihapus!")
+      print("> Tidak ada data yang bisa dihapus!")
       print(50*"=")
       return
     for i in range(data):
@@ -81,7 +85,7 @@ def programController():
   ableCommand = ["/start", "/save", "/delete"]
   user_command = input("Masukan Perintah: ")
   if user_command not in ableCommand:
-    print("Perintah tidak sesuai!")
+    print("> Perintah tidak sesuai!")
     print(50*"=")
     return True
   command = Command()

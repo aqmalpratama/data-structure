@@ -54,7 +54,6 @@ class Converter:
       angka //= 16
     while stack.is_empty() != True:
       result += str(outList[stack.pop()])
-    print(result)
     result = result[::1]
     return result
 
@@ -88,8 +87,8 @@ def main():
   state = True
   while state:
     programController()
-    yesList = ["Y", 'y', 1]
-    noList = ["N", 'n', 0]
+    yesList = ["Y", 'y', "1"]
+    noList = ["N", 'n', "0"]
     stateTry = True
     while stateTry:
       feedback = input("Apakah ingin menjalankan program ini lagi? (Y/N): ")
@@ -105,7 +104,7 @@ def main():
     elif feedback in noList:
       state = False
   print(50*"=")
-  print("Terimakasih telah menggunakan program ini")
+  print("Terimakasih telah menggunakan program ini >_<")
   print(50*"=")
 
 main()

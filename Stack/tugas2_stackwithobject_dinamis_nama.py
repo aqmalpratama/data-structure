@@ -18,6 +18,9 @@ class Stack:
   def size(self):
     return len(self.items)
 
+# Maksimal Data Nama Yang dapat Ditampung
+Max_Size_Name = 10
+
 class Command:
   def _init_(self, data):
     self.data = data
@@ -28,10 +31,10 @@ class Command:
 
   def start(self):
     self.startStatus = True
-    print("\nMasukan Data Secara Manual, Maksimal 10!")
+    print(f"\nMasukan Data Secara Manual, Maksimal {Max_Size_Name}!")
     print(50*"=")
     count = 1
-    ableCommand = ["/start", "/save", "/delete"]
+    ableCommand = ["/save", "/delete"]
     while self.saveStatus == False:
       user_input = input(f"Data ke-{count}: ")
       if user_input[0] == "/":
@@ -48,9 +51,9 @@ class Command:
         self.delete(delete_count)
         count-=delete_count+1
       else:
-        if count > 11:
+        if count > Max_Size_Name+1:
           count-=1
-          print(f"Sudah mencapai batas! data [{user_input}] tidak dapat dimasukkan!")
+          print(f"Sudah mencapai batas maxsimal {Max_Size_Name}! data [{user_input}] tidak dapat dimasukkan!")
         else:
           self.stack.push(user_input)
 

@@ -31,7 +31,7 @@ class Command:
     print("\nMasukan Data Secara Manual!")
     print(50*"=")
     count = 1
-    ableCommand = ["/start", "/save", "/delete"]
+    ableCommand = ["/save", "/delete"]
     while self.saveStatus == False:
       user_input = input(f"Data ke-{count}: ")
       if user_input[0] == "/":

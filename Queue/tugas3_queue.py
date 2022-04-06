@@ -1,6 +1,6 @@
 def tambah(queue, limit, deletedIndex):
   newQueue = [x for x in queue if x != "kosong"]
-  print(f'size {len(newQueue)}, limit {limit}, index yang dihapus ada {len(deletedIndex)}')
+  # print(f'size {len(newQueue)}, limit {limit}, index yang dihapus ada {len(deletedIndex)}')
   deletedIndex.sort()
   size = index = len(newQueue)
   if len(newQueue) == int(limit):
@@ -37,7 +37,8 @@ def hapus(queue):
           queue[index] = 'kosong'
           reconfirm = False
           print(f'Data {item} berhasil dihapus dari antrian.')
-          print(f'index yang dihapus-{index}')
+          # print(f'index yang dihapus-{index}')
+          return index
         else:
           print(f'Data {item} tidak ada di dalam antrian.')
       else:
@@ -45,13 +46,11 @@ def hapus(queue):
     else:
       print('Antrian kosong')
       reconfirm = False
-      index = 0
-    return index
 
 def tampil(queue):
   newQueue = [x for x in queue if x != "kosong"]
-  print(f'data queue : {queue}')
-  print(f'data newqueue : {newQueue}')
+  # print(f'data queue : {queue}')
+  # print(f'data newqueue : {newQueue}')
   print('Isi Antrian: ')
   size = len(newQueue)
   # queue.sort()
@@ -98,5 +97,5 @@ def main():
       print('Program diakhiri. Sekian, terima kasih.\n')
     else:
       print('Pilihan tidak tersedia. Harap memilih pilihan yang tersedia!\n')
-    print(f'Data deletedIndex : {deletedIndex}')
+    # print(f'Data deletedIndex : {deletedIndex}')
 main()

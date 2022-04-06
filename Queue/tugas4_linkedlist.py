@@ -10,12 +10,6 @@ def tampil(data):
   print()
 
 def tambah(data, next_id):
-  # if bool(data.items()) == False:
-  #   next_id = 1
-  # else:
-  #   last_key = list(data.keys())[-1]
-  #   next_id = last_key + 1
-
   kode = input('Masukkan kode: ')
   nama = input('Masukkan nama: ')
   data[next_id] = {}
@@ -70,11 +64,11 @@ def hapus(data):
     print('---------- INFO ------------')
     if exist == True:
       data.pop(id_ke)
-      print(f'Berhasil menghapus data {search_key}')
+      print(f'Berhasil menghapus data {search_key}\n')
     else:
       print('Data tidak ditemukan')
+    return id_ke
   print()
-  return id_ke
 
 def pilihMenu():
   print('Menu:')
@@ -88,24 +82,7 @@ def pilihMenu():
 
 def main():
   print('---- Program CRUD (LINKED LIST) ----')
-  dictionary_mahasiswa = {
-    # 1 : {
-    #   'kode'  : 'AZL',
-    #   'nama'  : 'Azrila'
-    # },
-    # 2 : {
-    #   'kode'  : 'AQM',
-    #   'nama'  : 'Aqmal'
-    # },
-    # 3 : {
-    #   'kode'  : 'SKR',
-    #   'nama'  : 'Sekar'
-    # },
-    # 4 : {
-    #   'kode'  : 'CCP',
-    #   'nama'  : 'Cecep'
-    # },
-  }
+  dictionary_mahasiswa = {}
 
   next_id = 0
   selesai = False

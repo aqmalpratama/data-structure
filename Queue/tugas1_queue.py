@@ -23,9 +23,9 @@ def main():
 
     jmlMaksimal = int(jmlMaksimal)
     jmlKedatangan = int(jmlKedatangan)
-    print('\nUntuk Pelanggan, Diharapkan mengisi daftar kehadiran')
     queue = []
-    
+
+    print('\nUntuk Pelanggan, Diharapkan mengisi daftar kehadiran')
     i = 0
     while i < jmlKedatangan:
       nama = input('Masukkan Nama Pelanggan: ')
@@ -38,10 +38,9 @@ def main():
           print(f'Pelanggan atas nama {nama} berhasil mendaftar Membership\n')
         i+=1
       else:
-        print('Nama Tidak Boleh Kosong')
-
+        print('Nama Tidak Boleh Kosong\n')
+        
     print(f'Isi Antrian:')
-
     i = 0
     while i < jmlMaksimal:
       if len(queue) == 0:

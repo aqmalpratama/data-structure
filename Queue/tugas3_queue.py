@@ -13,7 +13,7 @@ def tambah(queue, limit, deletedIndex):
         if item in queue:
           print(f'Data {item} sudah berada didalam antrian. Mohon masukkan data yang berbeda')
         else:
-          if len(deletedIndex) > 0:
+          if len(deletedIndex) > 0 :
             queue[deletedIndex[0]] = item
             deletedIndex.pop(0)
             print(f'Data {item} berhasil masuk ke dalam antrian\n')
@@ -24,7 +24,6 @@ def tambah(queue, limit, deletedIndex):
       else:
         print('Data yang ingin ditambahkan tidak boleh kosong\n')
         reconfirm = False
-  # return len(queue)
 
 def hapus(queue):
   reconfirm = True
@@ -89,7 +88,8 @@ def main():
       tambah(queue, limit, deletedIndex)
     elif pilihan == '2': # Hapus Data
       getIndex = hapus(queue)
-      deletedIndex.append(getIndex)
+      if getIndex:
+        deletedIndex.append(getIndex)
     elif pilihan == '3': # Tampil Data
       tampil(queue)
     elif pilihan == '4': # Program Selesai

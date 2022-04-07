@@ -52,7 +52,7 @@ def tampil(queue):
   # print(f'data newqueue : {newQueue}')
   print('Isi Antrian: ')
   size = len(newQueue)
-  # queue.sort()
+  newQueue.sort()
   if size != 0:
     i = 0
     while i < size:

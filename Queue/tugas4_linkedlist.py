@@ -26,7 +26,7 @@ def temukan(data):
     print('Mohon tambah data terlebih dahulu')
   else:
     search_filter = input('Anda ingin menemukan data berdasarkan apa (kode atau nama): ')
-    search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
+    search_key = input(f'Masukkan data yang Anda inginkan untuk ditemukan berdasarkan {search_filter}: ')
 
     exist = False
     for m_id, m_info in data.items():

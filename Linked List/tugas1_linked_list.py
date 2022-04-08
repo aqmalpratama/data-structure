@@ -10,12 +10,6 @@ def tampil(data):
   print()
 
 def tambah(data, next_id):
-  # if bool(data.items()) == False:
-  #   next_id = 1
-  # else:
-  #   last_key = list(data.keys())[-1]
-  #   next_id = last_key + 1
-
   kode = input('Masukkan kode: ')
   nama = input('Masukkan nama: ')
   data[next_id] = {}

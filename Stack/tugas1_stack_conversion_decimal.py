@@ -9,9 +9,6 @@ def isEmpty(stack):
   if size(stack) == 0:
     return True
 
-def clear(stack):
-  return stack.clear()
-
 def push(stack, item):
   stack.append(item)
 
@@ -21,14 +18,12 @@ def pop(stack):
 def decimalToBinary(angka):
   stack = createStack()
   resConversion = ''
-  storeBilDec = angka
   while angka > 0:
     push(stack, angka % 2)
-    angka = angka // 2
+    angka //= 2
   while isEmpty(stack) != True:
     resConversion = resConversion + str(pop(stack))
-  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan biner adalah {resConversion}"
-  return txt
+  return resConversion
 
 def decimalToOctal(angka):
   stack = createStack()
@@ -39,13 +34,11 @@ def decimalToOctal(angka):
     angka = angka // 8
   while isEmpty(stack) != True:
     resConversion = resConversion + str(pop(stack))
-  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan oktal adalah {resConversion}"
-  return txt
+  return resConversion
 
 def decimalToHexadecimal(angka):
   stack = createStack()
   conversion_table = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A' , 'B', 'C', 'D', 'E', 'F']
-  storeBilDec = angka
   resConversion = ''
   while angka > 0:
     push(stack, angka % 16)
@@ -53,22 +46,26 @@ def decimalToHexadecimal(angka):
   while isEmpty(stack) != True:
     resConversion = str(conversion_table[pop(stack)] + resConversion)
   resConversion = resConversion[::-1]
-  txt = f"Hasil konversi bilangan desimal {storeBilDec} ke bilangan hexadesimal adalah {resConversion}"
-  return txt
+  return resConversion
 
 def main():
   cobaLagi = True
   while cobaLagi == True:
-    print('---- Program Mengkonversi Bilangan Desimal ke Biner, Oktal, dan Hexadesimal ----')
+    print("""
+======================================================================================
+-------------------------------- Selamat Datang --------------------------------------
+------ Program Mengkonversi Bilangan Desimal ke Biner, Oktal, dan Heksadesimal -------
+======================================================================================
+    """)
     bilDesimal = input("Masukkan Bilangan Desimal: ")
     if bilDesimal:
       if bilDesimal.isnumeric():
         bilDesimal = int(bilDesimal)
-        print(decimalToBinary(bilDesimal))
-        print(decimalToOctal(bilDesimal))
-        print(decimalToHexadecimal(bilDesimal))
+        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToBinary(bilDesimal)}')
+        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToOctal(bilDesimal)}')
+        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToHexadecimal(bilDesimal)}')
         reconfirm = True
-        while reconfirm == True:
+        while reconfirm:
           print('\n--- Pilihan ---')
           print('1. Program akan dijalankan kembali')
           print('2. Program akan diakhiri')
@@ -76,7 +73,6 @@ def main():
           if konfirmasi == '1':
             print("Baik, program dijalankan kembali\n")
             reconfirm = False
-            cobaLagi = True
           elif konfirmasi == '2':
             print('Program diakhiri. Sekian, terima kasih\n')
             reconfirm = cobaLagi = False
@@ -84,7 +80,6 @@ def main():
             print('* Peringatan *')
             print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia')
             print('Mohon ketik dengan pilihan yang tersedia\n')
-            reconfirm = True
       else:
         print('* Peringatan *')
         print('Bilangan desimal harus diisi dengan angka')
@@ -93,5 +88,4 @@ def main():
       print('* Peringatan *')
       print('Bilangan desimal tidak boleh kosong')
       print('Program dijalankan kembali\n')
-
 main()

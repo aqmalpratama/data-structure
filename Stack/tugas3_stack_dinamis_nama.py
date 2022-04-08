@@ -9,9 +9,6 @@ def isEmpty(stack):
   if size(stack) == 0:
     return True
 
-def clear(stack):
-  return stack.clear()
-
 def push(stack, item):
   stack.append(item)
 

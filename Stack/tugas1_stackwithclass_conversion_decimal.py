@@ -11,9 +11,6 @@ class Stack:
  
   def pop(self):
     return self.items.pop()
-
-  def clear(self):
-    return self.items.clear()
     
   def size(self):
     return len(self.items)
@@ -65,7 +62,7 @@ def programController():
 ==================================================
   """)
   print(50*"=")
-  input_user = input("Masukkan angka yang akan dikonfersi: ")
+  input_user = input("Masukkan angka yang akan dikonversi: ")
   if input_user == "":
     print("\nTidak ada data yang dimasukkan!")
     print(50*"=")
@@ -77,7 +74,7 @@ def programController():
   convert = Converter(input_user)
   print(f"""
 Angka [Desimal] yang dimasukan adalah : {input_user}
-Hasil Konfersi:
+Hasil Konversi:
  - Desimal ke Binary      : {convert.desToBin()}
  - Desimal ke Oktal       : {convert.desToOct()}
  - Desimal ke Hexadesimal : {convert.desToHex()}

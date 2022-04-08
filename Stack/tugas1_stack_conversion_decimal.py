@@ -22,7 +22,7 @@ def decimalToBinary(angka):
     push(stack, angka % 2)
     angka //= 2
   while isEmpty(stack) != True:
-    resConversion = resConversion + str(pop(stack))
+    resConversion += str(pop(stack))
   return resConversion
 
 def decimalToOctal(angka):
@@ -33,7 +33,7 @@ def decimalToOctal(angka):
     push(stack, angka % 8)
     angka = angka // 8
   while isEmpty(stack) != True:
-    resConversion = resConversion + str(pop(stack))
+    resConversion += str(pop(stack))
   return resConversion
 
 def decimalToHexadecimal(angka):
@@ -44,7 +44,7 @@ def decimalToHexadecimal(angka):
     push(stack, angka % 16)
     angka = angka // 16
   while isEmpty(stack) != True:
-    resConversion = str(conversion_table[pop(stack)] + resConversion)
+    resConversion += str(conversion_table[pop(stack)])
   resConversion = resConversion[::-1]
   return resConversion
 
@@ -56,7 +56,7 @@ def main():
 -------------------------------- Selamat Datang --------------------------------------
 ------ Program Mengkonversi Bilangan Desimal ke Biner, Oktal, dan Heksadesimal -------
 ======================================================================================
-    """)
+""")
     bilDesimal = input("Masukkan Bilangan Desimal: ")
     if bilDesimal:
       if bilDesimal.isnumeric():

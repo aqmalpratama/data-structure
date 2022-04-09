@@ -1,52 +1,73 @@
+def createArray():
+  arr = []
+  return arr
+
+def addItem(arr, item):
+  arr.append(item)
+
+def removeItem(arr, item):
+  return arr.pop(0)
+
+def sizeArray(arr):
+  return len(arr)
+
+def isNum(item):
+  if item.isnumeric():
+    return True
+  else:
+    print("* Peringatan *")
+    print("Mohon masukkan dalam bentuk angka.\n")
+    return False
+
 def main():
   cobaLagi = True
   while cobaLagi:
-    print('\n---------- Program Antrian (Queue) Membership ----------')
+    print("""
+============================================================
+-------------------- Selamat Datang ------------------------
+----------- Program Antrian Pendaftaran Membership ---------
+============================================================
+""")
 
     reconfirm = True
     while reconfirm:
-      jmlMaksimal = input('Masukkan Maksimum Panjang Antrian (dalam bentuk angka): ')
-      if jmlMaksimal.isnumeric():
-        reconfirm = False
-      else:
-        print("Mohon masukkan dalam bentuk angka.\n")
-        reconfirm = True
+      jmlMaksimal = input('Masukkan maksimum panjang antrian pendaftar yang dapat dilayani hari ini (dalam bentuk angka): ')
+      if isNum(jmlMaksimal):
+        break
 
     reconfirm = True
     while reconfirm:
-      jmlKedatangan = input('Masukkan Banyaknya Kedatangan Pelanggan Hari Ini (dalam bentuk angka): ')
-      if jmlKedatangan.isnumeric():
-        reconfirm = False
-      else:
-        print("Mohon masukkan dalam bentuk angka.\n")
-        reconfirm = True
+      jmlKedatangan = input('Masukkan banyaknya kedatangan pendaftar hari ini (dalam bentuk angka): ')
+      if isNum(jmlKedatangan):
+        break
 
     jmlMaksimal = int(jmlMaksimal)
     jmlKedatangan = int(jmlKedatangan)
-    queue = []
+    arr = createArray()
 
-    print('\nUntuk Pelanggan, Diharapkan mengisi daftar kehadiran')
+    print('\nUntuk para pendaftar, diharapkan mengisi daftar kehadiran')
     i = 0
     while i < jmlKedatangan:
-      nama = input('Masukkan Nama Pelanggan: ')
+      nama = input('Masukkan Nama pendaftar: ')
       if nama:
-        queue.append(nama)
-        if len(queue) > jmlMaksimal:
-          print('Antrian Penuh!')
-          print(f'Pelanggan atas nama {nama} tidak dapat dimasukkan, harap datang dihari berikutnya\n')
+        addItem(arr, nama)
+        if sizeArray(arr) > jmlMaksimal:
+          print("* Peringatan *")
+          print(f'Antrian Penuh! Pendaftar atas nama {nama} tidak dapat dimasukkan, harap datang dihari berikutnya\n')
         else:
-          print(f'Pelanggan atas nama {nama} berhasil mendaftar Membership\n')
+          print(f'Pendaftar atas nama {nama} berhasil mendaftar Membership\n')
         i+=1
       else:
+        print("* Peringatan *")
         print('Nama Tidak Boleh Kosong\n')
         
-    print(f'Isi Antrian:')
+    print(f'Para pendaftar yang dapat dilayani hari ini:')
     i = 0
     while i < jmlMaksimal:
-      if len(queue) == 0:
+      if sizeArray(arr) == 0:
         break
       else:
-        print(f'{i + 1}. {queue.pop(0)}')
+        print(f'{i + 1}. {removeItem(arr, arr[i])}')
       i+=1
 
     reconfirm = True
@@ -58,14 +79,10 @@ def main():
       if konfirmasi == '1':
         print("Baik, program dijalankan kembali.\n")
         reconfirm = False
-        cobaLagi = True
       elif konfirmasi == '2':
         print('Program diakhiri. Sekian, terima kasih.\n')
         reconfirm = cobaLagi = False
       else:
         print('* Peringatan *')
-        print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia.')
         print('Mohon ketik dengan pilihan yang tersedia.')
-        reconfirm = True
-
 main()

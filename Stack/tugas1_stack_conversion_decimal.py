@@ -74,18 +74,18 @@ def main():
             print("Baik, program dijalankan kembali\n")
             reconfirm = False
           elif konfirmasi == '2':
-            print('Program diakhiri. Sekian, terima kasih\n')
+            print('Program diakhiri. Sekian, terima kasih')
             reconfirm = cobaLagi = False
           else:
             print('* Peringatan *')
             print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia')
-            print('Mohon ketik dengan pilihan yang tersedia\n')
+            print('Mohon ketik dengan pilihan yang tersedia')
       else:
         print('* Peringatan *')
         print('Bilangan desimal harus diisi dengan angka')
-        print('Program dijalankan kembali\n')
+        print('Program dijalankan kembali')
     else:
       print('* Peringatan *')
       print('Bilangan desimal tidak boleh kosong')
-      print('Program dijalankan kembali\n')
+      print('Program dijalankan kembali')
 main()

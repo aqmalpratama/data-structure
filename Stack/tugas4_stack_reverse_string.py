@@ -28,7 +28,7 @@ def reverseStringStack(string):
   return string
 
 def main():
-  cobaLagi = 1
+  cobaLagi = True
   while cobaLagi:
     print("--- Program Membalik Kata atau Kalimat ---")
     kata_tidak_kosong = True
@@ -38,10 +38,7 @@ def main():
         kata_tidak_kosong = False
       else:
         print('Kata atau kalimat tidak boleh kosong.')
-        
-    print(f"Kalimat yang diinput user : {inputString}")
     print(f"Kalimat yang telah dibalik : {reverseStringStack(inputString)}")
-
     reconfirm = True
     while reconfirm == True:
       print('\n--- Pilihan ---')
@@ -51,7 +48,6 @@ def main():
       if konfirmasi == '1':
         print("Baik, program dijalankan kembali\n")
         reconfirm = False
-        cobaLagi = True
       elif konfirmasi == '2':
         print('Program diakhiri. Sekian, terima kasih\n')
         reconfirm = cobaLagi = False
@@ -60,5 +56,4 @@ def main():
         print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia')
         print('Mohon ketik dengan pilihan yang tersedia')
         reconfirm = True
-
 main()

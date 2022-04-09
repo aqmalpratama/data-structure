@@ -1,69 +1,18 @@
-def tambah(queue, limit, deletedIndex):
-  newQueue = [x for x in queue if x != "kosong"]
-  # print(f'size {len(newQueue)}, limit {limit}, index yang dihapus ada {len(deletedIndex)}')
-  deletedIndex.sort()
-  size = index = len(newQueue)
-  if len(newQueue) == int(limit):
-    print('Antrian sudah penuh')
-  else:
-    reconfirm = True
-    while reconfirm:
-      item = input('Masukkan data yang ingin ditambahkan: ')
-      if item:
-        if item in queue:
-          print(f'Data {item} sudah berada didalam antrian. Mohon masukkan data yang berbeda')
-        else:
-          if len(deletedIndex) > 0 :
-            queue[deletedIndex[0]] = item
-            deletedIndex.pop(0)
-            print(f'Data {item} berhasil masuk ke dalam antrian\n')
-          else:
-            queue.append(item)
-            print(f'Data {item} berhasil masuk ke dalam antrian\n')
-          reconfirm = False
-      else:
-        print('Data yang ingin ditambahkan tidak boleh kosong\n')
-        reconfirm = False
+def createQueue():
+  queue = []
+  return queue
 
-def hapus(queue):
-  reconfirm = True
-  while reconfirm:
-    if len(queue) > 0:
-      item = input('Data yang ingin dihapus: ')
-      if item:
-        if item in queue:
-          index = queue.index(item)
-          queue[index] = 'kosong'
-          reconfirm = False
-          print(f'Data {item} berhasil dihapus dari antrian.')
-          # print(f'index yang dihapus-{index}')
-          return index
-        else:
-          print(f'Data {item} tidak ada di dalam antrian.')
-      else:
-        print('Data yang ingin dihapus tidak boleh kosong')
-    else:
-      print('Antrian kosong')
-      reconfirm = False
+def addItem(queue, item):
+  queue.append(item)
 
-def tampil(queue):
-  newQueue = [x for x in queue if x != "kosong"]
-  # print(f'data queue : {queue}')
-  # print(f'data newqueue : {newQueue}')
-  print('Isi Antrian: ')
-  size = len(newQueue)
-  newQueue.sort()
-  if size != 0:
-    i = 0
-    while i < size:
-      if i != size - 1:
-        print(newQueue[i], end=" - ")
-      else:
-        print(newQueue[i])
-      i+=1
+def removeItem(queue, item = ''):
+  if item:
+    return queue.remove(item)
   else:
-    print('Antrian Kosong')
-  print()
+    return queue.pop(0)
+
+def sizeQueue(queue):
+  return len(queue)
 
 def pilihMenu():
   print('Menu:')
@@ -74,28 +23,89 @@ def pilihMenu():
   pilihan = input('Masukkan Pilihanmu (1, 2, 3, atau 4): ')
   return pilihan
 
-def main():
-  print('---- Program Menambah dan Menghapus Data (Antrian) ----')
-  queue = []
-  deletedIndex = []
+def tambah(queue, limit):
+  size = sizeQueue(queue)
+  if size == int(limit):
+    print("* Peringatan *")
+    print('Antrian sudah penuh !!\n')
+  else:
+    reconfirm = True
+    while reconfirm:
+      item = input(f'Masukkan data pada indeks ke-{size + 1}: ')
+      if item:
+        if item in queue:
+          print("* Peringatan *")
+          print(f'Data {item} sudah berada di dalam antrian. Mohon masukkan data yang berbeda')
+        else:
+          queue.append(item)
+          print("* Info *")
+          print(f'Data {item} berhasil masuk ke dalam antrian\n')
+          reconfirm = False
+      else:
+        print("* Peringatan *")
+        print('Data yang ingin ditambahkan tidak boleh kosong\n')
+        reconfirm = False
 
-  getIndex = 0
+def hapus(queue):
+  reconfirm = True
+  while reconfirm:
+    if sizeQueue(queue) > 0:
+      item = input('Data yang ingin dihapus: ')
+      if item:
+        if item in queue:
+          removeItem(queue, item)
+          print('* Info *')
+          print(f'Data {item} berhasil dihapus dari antrian\n')
+          reconfirm = False
+        else:
+          print('* Peringatan *')
+          print(f'Data {item} tidak ada di dalam antrian.')
+      else:
+        print('* Peringatan *')
+        print('Data yang ingin dihapus tidak boleh kosong')
+    else:
+      print('* Peringatan *')
+      print('Antrian kosong, lakukan tambah data terlebih dahulu')
+      reconfirm = False
+
+def tampil(queue):
+  print('Isi Antrian: ')
+  size = sizeQueue(queue)
+  if size != 0:
+    i = 0
+    while i < size:
+      if i != size - 1:
+        print(queue[i], end=" - ")
+      else:
+        print(queue[i])
+      i+=1
+  else:
+    print('* Peringatan *')
+    print('Antrian kosong, lakukan tambah data terlebih dahulu')
+  print()
+
+def main():
+  print("""
+===================================================================
+------------------------ Selamat Datang ---------------------------
+---- Program Menambah, Menghapus, dan Menampilkan Data (Queue) ----
+===================================================================
+""")
+  queue = createQueue()
   limit = input('Masukkan limit antrian: ')
-  selesai = False
-  while selesai == False:
+  lanjut = True
+  while lanjut:
     pilihan = pilihMenu()
     if pilihan == '1': # Tambah Data
-      tambah(queue, limit, deletedIndex)
+      tambah(queue, limit)
     elif pilihan == '2': # Hapus Data
-      getIndex = hapus(queue)
-      if getIndex:
-        deletedIndex.append(getIndex)
+      hapus(queue)
     elif pilihan == '3': # Tampil Data
       tampil(queue)
     elif pilihan == '4': # Program Selesai
-      selesai = True
+      lanjut = False
       print('Program diakhiri. Sekian, terima kasih.\n')
     else:
-      print('Pilihan tidak tersedia. Harap memilih pilihan yang tersedia!\n')
-    # print(f'Data deletedIndex : {deletedIndex}')
+      print("* Peringatan *")
+      print('Harap memilih pilihan yang tersedia!\n')
 main()

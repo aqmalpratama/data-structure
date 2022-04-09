@@ -1,109 +1,130 @@
-def tampil(data):
-  if bool(data.items()) == False:
-    print('---------- INFO ------------')
-    print('Data kosong')
-    print('Mohon tambah data terlebih dahulu')
-  else:
-    for m_id, m_info in data.items():
-      print("\nId Mahasiswa:", m_id)
-      print(m_info['kode'] + ' : ' +  m_info['nama'])
-  print()
+# Create a node
+class Node:
+  def __init__(self, kode, nama):
+    self.kode = kode
+    self.nama = nama
+    self.next = None
 
-def tambah(data, next_id):
-  kode = input('Masukkan kode: ')
-  nama = input('Masukkan nama: ')
-  data[next_id] = {}
-  data[next_id]['kode'] = kode.upper()
-  data[next_id]['nama'] = nama
-  print(f'Berhasil menambahkan data dengan kode {kode.upper()} dan nama {nama}')
-  print()
-  return next_id
+class LinkedList:
 
-def temukan(data):
-  if bool(data.items()) == False:
-    print('---------- INFO ------------')
-    print('Data kosong')
-    print('Mohon tambah data terlebih dahulu')
-  else:
-    search_filter = input('Anda ingin menemukan data berdasarkan apa (kode atau nama): ')
-    search_key = input(f'Masukkan data yang Anda inginkan untuk ditemukan berdasarkan {search_filter}: ')
+  def __init__(self):
+    self.head = None
 
-    exist = False
-    for m_id, m_info in data.items():
-      if (search_filter == 'kode' and m_info['kode'].lower() == search_key) or (search_filter == 'nama' and m_info['nama'].lower() == search_key):
-        kode      = m_info['kode']
-        nama      = m_info['nama']
-        exist     = True
-    
-    print('---------- INFO ------------')
-    print(f'Pencarian {search_key}')
-    print('Hasil Pencarian:')
-    if exist:
-      print(kode + ' : ' +  nama)
-    else:
-      print(search_key + ' tidak ditemukan')
-  print()
+  # Insert at the beginning
+  def insertAtBeginning(self, kode, nama):
+    new_node = Node(kode, nama)
+    new_node.next = self.head
+    self.head = new_node
 
-def hapus(data):
-  if bool(data.items()) == False:
-    print('---------- INFO ------------')
-    print('Data kosong')
-    print('Mohon tambah data terlebih dahulu')
-  else:
-    search_filter = input('Anda ingin menghapus data berdasarkan apa (kode atau nama): ')
-    search_key = input(f'Masukkan data yang Anda inginkan untuk dihapus berdasarkan {search_filter}: ')
+  # Insert after a node
+  def insertAfter(self, prev_node, new_data):
+    if prev_node is None:
+      print("The given previous node must inLinkedList.")
+      return
+    new_node = Node(new_data)
+    new_node.next = prev_node.next
+    prev_node.next = new_node
 
-    exist = False
-    for m_id, m_info in data.items():
-      if (search_filter == 'kode' and m_info['kode'].lower() == search_key) or (search_filter == 'nama' and m_info['nama'].lower() == search_key):
-        id_ke     = m_id
-        kode      = m_info['kode']
-        nama      = m_info['nama']
-        exist     = True
-    
-    print('---------- INFO ------------')
-    if exist == True:
-      data.pop(id_ke)
-      print(f'Berhasil menghapus data {search_key}\n')
-    else:
-      print('Data tidak ditemukan')
-    return id_ke
-  print()
+  # Insert at the end
+  def insertAtEnd(self, kode, nama):
+    new_node = Node(kode, nama)
+    if self.head is None:
+        self.head = new_node
+        return
+    last = self.head
+    while (last.next):
+      last = last.next
+    last.next = new_node
 
-def pilihMenu():
-  print('Menu:')
-  print('1. Tambah Data')
-  print('2. Hapus Data')
-  print('3. Temukan Data')
-  print('4. Tampilkan Data')
-  print('5. Selesai')
-  pilihan = input('Masukkan Pilihanmu (1, 2, 3, 4, atau 5): ')
+  # Deleting
+  def deleteByCode(self, kode):
+    if self.head is None:
+      return
+    temp = self.head
+    if temp.kode == kode:
+      self.head = temp.next
+      temp = None
+      return
+
+  # Search an element
+  def searchByCode(self, key):
+    current = self.head
+    while current is not None:
+      if current.kode == key:
+        return current
+      current = current.next
+    return False
+
+  # Print the linked list
+  def printList(self):
+    temp = self.head
+    while (temp):
+      print(f'{temp.kode} : {temp.nama}')
+      temp = temp.next
+
+def pilihAksi():
+  print("""Daftar Aksi:
+  1. Tambah Data
+  2. Cari Data
+  3. Hapus Data
+  4. Tampilkan Data
+  5. Keluar
+  """)
+  pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
   return pilihan
 
 def main():
-  print('---- Program CRUD (LINKED LIST) ----')
-  dictionary_mahasiswa = {}
-
-  next_id = 0
-  selesai = False
-  while selesai == False:
-    pilihan = pilihMenu()
-    if pilihan == '1': # Tambah Data
-      if bool(dictionary_mahasiswa.items()) == False:
-        next_id = 1
+  print("""
+========================================================================
+-------------------------- Selamat Datang ------------------------------
+---- Program Menambah, Menemukan, dan Menampilkan Data (LinkedList) ----
+========================================================================""")
+  llist = LinkedList()
+  print("* Format Pengisian Data*\nKode harus 3 huruf kapital\nNama harus diawali dengan kapital")
+  aksi = pilihAksi()
+  while aksi != "5": # selama aksi bukan 5
+    if aksi == "1": # tambah data
+      while True:
+        kode = input("Masukkan kode: ")
+        if kode:
+          if len(kode) == 3:
+            if kode[0].isupper() and kode[1].isupper() and kode[2].isupper():
+              nama = input("Masukkan nama: ")
+              if nama:
+                if nama[0].isupper():
+                  llist.insertAtEnd(kode, nama)
+                  print("Data berhasil ditambahkan\n")
+                  break
+                else:
+                  print("Nama harus diawali dengan kapital\n")
+              else:
+                print("Nama tidak boleh kosong\n")
+            else:
+              print("Kode harus 3 huruf kapital\n")
+          else:
+            print("Kode harus 3 huruf kapital\n")
+    elif aksi == "2": # temukan data
+      kode = input("Masukkan kode yang ingin ditemukan: ")
+      findData = llist.searchByCode(kode)
+      if bool(findData):
+        print(f"Pencarian kode {kode} berhasil ditemukan\nHasil pencarian:")
+        print(f'{findData.kode} : {findData.nama}\n')
       else:
-        next_id += 1
-      next_id = tambah(dictionary_mahasiswa, next_id)
-    elif pilihan == '2': # Hapus Data
-      hapus(dictionary_mahasiswa)
-    elif pilihan == '3': # Temukan Data
-      temukan(dictionary_mahasiswa)
-    elif pilihan == '4': # Tampil Data
-      tampil(dictionary_mahasiswa)
-    elif pilihan == '5': # Program Selesai
-      selesai = True
-      print('Program diakhiri. Sekian, terima kasih.\n')
-    else:
-      print('Pilihan tidak tersedia. Harap memilih pilihan yang tersedia!\n')
-
+        print(f"Pencarian kode {kode} tidak ditemukan\n")
+    elif aksi == "3": # hapus data
+      kode = input("Masukkan kode yang ingin dihapus: ")
+      findData = llist.searchByCode(kode)
+      if bool(findData):
+        llist.deleteByCode(kode)
+        print(f"Data dengan kode {kode} berhasil dihapus\n")
+      else:
+        print("Data tidak ditemukan")
+    elif aksi == "4": # tampilkan data
+      print("Menampilkan semua data:")
+      llist.printList()
+      print('')
+    else: # aksi tidak valid
+      print("Pilihan tidak valid")
+    aksi = pilihAksi()
+  print("Terima kasih telah menggunakan program ini")
 main()

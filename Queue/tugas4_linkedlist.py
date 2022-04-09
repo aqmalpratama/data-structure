@@ -6,24 +6,8 @@ class Node:
     self.next = None
 
 class LinkedList:
-
   def __init__(self):
     self.head = None
-
-  # Insert at the beginning
-  def insertAtBeginning(self, kode, nama):
-    new_node = Node(kode, nama)
-    new_node.next = self.head
-    self.head = new_node
-
-  # Insert after a node
-  def insertAfter(self, prev_node, new_data):
-    if prev_node is None:
-      print("The given previous node must inLinkedList.")
-      return
-    new_node = Node(new_data)
-    new_node.next = prev_node.next
-    prev_node.next = new_node
 
   # Insert at the end
   def insertAtEnd(self, kode, nama):
@@ -70,7 +54,7 @@ def pilihAksi():
   4. Tampilkan Data
   5. Keluar
   """)
-  pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
+  pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, atau 5): ")
   return pilihan
 
 def main():

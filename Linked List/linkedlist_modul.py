@@ -37,13 +37,21 @@ class LinkedList:
 
   # Deleting
   def deleteByCode(self, kode):
-    if self.head is None:
+    current = self.head
+    if current is not None:
+      if current.data == data:
+        self.head = current.next
+        current = None
+        return
+    while current is not None:
+      if current.data == data:
+        break
+      prev = current
+      current = current.next
+    if current is None:
       return
-    temp = self.head
-    if temp.kode == kode:
-      self.head = temp.next
-      temp = None
-      return
+    prev.next = current.next
+    current = None
 
   # Search an element
   def searchByCode(self, key):
@@ -79,3 +87,31 @@ class LinkedList:
 
           index = index.next
         current = current.next
+
+  def isEmpty(self):
+    temp = self.head
+    if temp is None:
+      return True
+    else:
+      return False
+
+  def getCount(self):
+    temp = self.head
+    count = 0
+    while (temp):
+      count += 1
+      temp = temp.next
+    return count
+
+  def sortDataToArray(self):
+    size = self.getCount()
+    arr = []
+    temp = self.head
+    while (temp):
+      arr.append(temp.data)
+      temp = temp.next
+    arr.sort()
+    i = 0
+    while (i < size):
+      print(f'{arr[i]}')
+      i += 1

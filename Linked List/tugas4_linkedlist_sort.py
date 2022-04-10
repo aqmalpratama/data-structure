@@ -21,20 +21,11 @@ class LinkedList:
 
   def searchData(self, data):
     current = self.head
-    exist = False
-    if self.isEmpty() == False:
-      while current is not None:
-        if current.data == data:
-          exist = True
-          break
-        current = current.next
-      if exist:
-        print(f'Data {data} ditemukan')
-      else:
-        print(f'Data {data} tidak ditemukan')
-      return exist
-    else:
-      print('Data kosong')
+    while current is not None:
+      if current.data == data:
+        return current
+      current = current.next
+    return False
 
   def deleteData(self, data):
     current = self.head
@@ -74,7 +65,7 @@ class LinkedList:
       temp = temp.next
     return count
 
-  def sortData(self):
+  def sortDataToArray(self):
     size = self.getCount()
     arr = []
     temp = self.head
@@ -109,11 +100,10 @@ def printTitle(arr, aksi):
     print(f'Isi data setelah {txt} dihapus: ')
     
 def main():
-  print("""
-========================================================================
--------------------------- Selamat Datang ------------------------------
----- Program Menambah, Menemukan, dan Menampilkan Data (LinkedList) ----
-========================================================================""")
+  print("""========================================================================================
+---------------------------------- Selamat Datang --------------------------------------
+---- Program Menambah, Menemukan, Menampilkan beserta Mengurutkan Data (LinkedList) ----
+========================================================================================""")
   llist = LinkedList()
   aksi = pilihAksi()
   arrInsert = []
@@ -152,7 +142,7 @@ def main():
           printTitle(arrDelete, aksiTerakhir)
         else:
           print('Isi data saat ini: ')
-        llist.sortData()
+        llist.sortDataToArray()
         aksiTerakhir = '3'
       else:
         print("Data kosong")

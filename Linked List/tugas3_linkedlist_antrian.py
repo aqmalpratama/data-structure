@@ -69,6 +69,22 @@ def pilihAksi():
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
   return pilihan
 
+def printTitle(arr, aksi):
+  txt = ''
+  i = 0
+  size = len(arr)
+  while i < size:
+    if i != size - 1:
+      txt += arr[i] + ', '
+    else:
+      txt += arr[i]
+    i+=1
+  arr.clear()
+  if aksi == '1':
+    print(f'Isi data setelah {txt} ditambah: ')
+  elif aksi == '2':
+    print(f'Isi data setelah {txt} dihapus: ')
+
 def main():
   print("""
 ========================================================================
@@ -123,31 +139,12 @@ def main():
         print('Data kosong\n')
     elif aksi == "3": # tampilkan data
       if llist.isEmpty() == False:
-        txt = ''
         if aksiTerakhir == '1':
-          i = 0
-          size = len(arrInsert)
-          while i < size:
-            if i != size - 1:
-              txt += arrInsert[i] + ', '
-            else:
-              txt += arrInsert[i]
-            i+=1
-          arrInsert.clear()
-          print(f'Isi setelah {txt} ditambahkan:')
+          printTitle(arrInsert, aksiTerakhir)
         elif aksiTerakhir == '2':
-          i = 0
-          size = len(arrDelete)
-          while i < size:
-            if i != size - 1:
-              txt += arrDelete[i] + ', '
-            else:
-              txt += arrDelete[i]
-            i+=1
-          arrDelete.clear()
-          print(f'Isi data setelah {txt} dihapus:')
+          printTitle(arrDelete, aksiTerakhir)
         else:
-          print('Isi data saat ini:')
+          print('Isi data saat ini: ')
         llist.printList()
         aksiTerakhir = '3'
       else:

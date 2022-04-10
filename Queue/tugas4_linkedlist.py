@@ -89,6 +89,8 @@ def main():
               print("Kode harus 3 huruf kapital\n")
           else:
             print("Kode harus 3 huruf kapital\n")
+        else:
+          print("Kode tidak boleh kosong\n")
     elif aksi == "2": # temukan data
       kode = input("Masukkan kode yang ingin ditemukan: ")
       findData = llist.searchByCode(kode)
@@ -104,13 +106,13 @@ def main():
         llist.deleteByCode(kode)
         print(f"Data dengan kode {kode} berhasil dihapus\n")
       else:
-        print("Data tidak ditemukan")
+        print("Data tidak ditemukan\n")
     elif aksi == "4": # tampilkan data
       print("Menampilkan semua data:")
       llist.printList()
       print('')
     else: # aksi tidak valid
-      print("Pilihan tidak valid")
+      print("Pilihan tidak valid\n")
     aksi = pilihAksi()
   print("Terima kasih telah menggunakan program ini")
 main()

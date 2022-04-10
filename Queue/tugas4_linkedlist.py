@@ -22,19 +22,27 @@ class LinkedList:
 
   # Deleting
   def deleteByCode(self, kode):
-    if self.head is None:
+    current = self.head
+    if current is not None:
+      if current.kode == kode:
+        self.head = current.next
+        current = None
+        return
+    while current is not None:
+      if current.kode == kode:
+        break
+      prev = current
+      current = current.next
+    if current is None:
       return
-    temp = self.head
-    if temp.kode == kode:
-      self.head = temp.next
-      temp = None
-      return
+    prev.next = current.next
+    current = None
 
   # Search an element
-  def searchByCode(self, key):
+  def searchByCode(self, kode):
     current = self.head
     while current is not None:
-      if current.kode == key:
+      if current.kode == kode:
         return current
       current = current.next
     return False
@@ -47,13 +55,7 @@ class LinkedList:
       temp = temp.next
 
 def pilihAksi():
-  print("""Daftar Aksi:
-  1. Tambah Data
-  2. Cari Data
-  3. Hapus Data
-  4. Tampilkan Data
-  5. Keluar
-  """)
+  print("Daftar Aksi:\n 1. Tambah Data\n 2. Temukan Data\n 3. Hapus Data\n 4. Tampilkan Data\n 5. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, atau 5): ")
   return pilihan
 

@@ -80,17 +80,26 @@ class LinkedList:
       current = current.next
     return False
 
-  def printListOrder(self):
-    size = self.getCount()
-    arr = []
+  def printFromFirst(self):
     temp = self.head
+    count = 1
     while (temp):
-      arr.append(temp.data)
+      print(f"No.{count} {temp.data}")
+      count+=1
       temp = temp.next
-    i = 0
-    while (i < size):
-      print(f'{arr[i]}')
-      i += 1
+
+  def printFromLast(self):
+    temp = self.head
+    arr = []
+    while (temp):
+      arr.append(temp.data) 
+      temp = temp.next
+    count = 1
+    i = len(arr)
+    while (i != 0):
+      print(f"No.{count} {arr[i-1]}")
+      count+=1
+      i-=1
 
   def isEmpty(self):
     temp = self.head
@@ -119,6 +128,11 @@ def pilihAksiTambah():
 
 def pilihAksiHapus():
   print("\nPilihan Hapus:\n1. Hapus Data di Depan\n2. Hapus di Belakang\n3. Hapus Data berdasarkan kata kunci\n4. Kembali")
+  pilihan = input("Masukkan pilihan Anda: ")
+  return pilihan
+
+def pilihAksiTampilkan():
+  print("\nPilihan Tampilan:\n1. Tampilkan data pertama ke terakhir\n2. Tampilkan data terakhir ke pertama\n3. Kembali")
   pilihan = input("Masukkan pilihan Anda: ")
   return pilihan
 
@@ -196,7 +210,15 @@ def main():
         print('Data kosong')
     elif aksi == "3": # tampilkan data
       if llist.isEmpty() == False:
-        llist.printListOrder()
+        aksiPilihan = pilihAksiTampilkan()
+        if aksiPilihan == "1":
+          llist.printFromFirst()
+        elif aksiPilihan == "2":
+          llist.printFromLast()
+        elif aksiPilihan == "3":
+          menuUtama()
+        else:
+          print("Pilihan tidak valid")
       else:
         print("Data kosong")
     else: # aksi tidak valid

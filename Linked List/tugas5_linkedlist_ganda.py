@@ -14,7 +14,7 @@ class LinkedList:
     new_node.next = self.head
     self.head = new_node
 
-  def insertAtAfter(self, data, key):
+  def insertAtAfter(self, key, data):
     new_node = Node(data)
     current = self.head
     while current is not None:
@@ -56,16 +56,20 @@ class LinkedList:
 
   def deleteFirst(self):
     temp = self.head
+    data = temp.data
     self.head = temp.next
     temp = None
+    return data
 
   def deleteLast(self):
     temp = self.head
     while (temp.next):
       prev = temp
       temp = temp.next
+    data = temp.data
     prev.next = None
     temp = None
+    return data
 
   # Search an element
   def searchData(self, key):
@@ -76,12 +80,17 @@ class LinkedList:
       current = current.next
     return False
 
-  def printListOrder(self, order):
+  def printListOrder(self):
+    size = self.getCount()
     arr = []
     temp = self.head
     while (temp):
       arr.append(temp.data)
       temp = temp.next
+    i = 0
+    while (i < size):
+      print(f'{arr[i]}')
+      i += 1
 
   def isEmpty(self):
     temp = self.head
@@ -98,32 +107,20 @@ class LinkedList:
       temp = temp.next
     return count
 
-def printTitle(arr, aksi):
-  txt = ''
-  i = 0
-  size = len(arr)
-  while i < size:
-    if i != size - 1:
-      txt += arr[i] + ', '
-    else:
-      txt += arr[i]
-    i+=1
-  arr.clear()
-  if aksi == '1':
-    print(f'Isi data setelah {txt} ditambah: ')
-  elif aksi == '2':
-    print(f'Isi data setelah {txt} dihapus: ')
-
 def menuUtama():
-  print("Daftar Aksi:\n1. Tambah Data\n2. Hapus Data\n3. Tampilkan Data\n4. Keluar")
+  print("\nDaftar Aksi:\n1. Tambah Data\n2. Hapus Data\n3. Tampilkan Data\n4. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
   return pilihan
 
 def pilihAksiTambah():
-  print("Daftar Aksi:\n1. Tambah Data di Depan\n2. Tambah Data di Belakang\n3.Tambah Data Setelah\n4. Kembali")
+  print("\nPilihan Tambah:\n1. Tambah Data di Depan\n2. Tambah Data di Belakang\n3. Tambah Data Setelah Kata Kunci\n4. Kembali")
+  pilihan = input("Masukkan pilihan Anda: ")
+  return pilihan
 
 def pilihAksiHapus():
-  print("Daftar Aksi:\n1. Hapus Data di Depan\n2. Hapus di Belakang\n3. Kembali")
+  print("\nPilihan Hapus:\n1. Hapus Data di Depan\n2. Hapus di Belakang\n3. Hapus Data berdasarkan kata kunci\n4. Kembali")
+  pilihan = input("Masukkan pilihan Anda: ")
+  return pilihan
 
 def main():
   print("""
@@ -133,49 +130,77 @@ def main():
 ========================================================================""")
   llist = LinkedList()
   aksi = menuUtama()
-  arrInsert = []
-  arrDelete = []
-  aksiTerakhir = ''
   while aksi != "4": # selama aksi bukan 4
     if aksi == "1": # tambah data
-      while True:
+      aksiTambah = pilihAksiTambah()
+      if aksiTambah == "1": #didepan
+        data = input("Masukkan data: ")
+        if data:
+          llist.insertAtBeginning(data)
+          print(f'Data {data} berhasil ditambahkan')
+        else:
+          print("* Peringatan *\nData harus diisi")
+      elif aksiTambah == "2": #diakhir
         data = input("Masukkan data: ")
         if data:
           llist.insertAtEnd(data)
-          print(f'Data {data} berhasil ditambahkan\n')
-          arrInsert.append(data)
-          aksiTerakhir = '1'
-          break
+          print(f'Data {data} berhasil ditambahkan')
         else:
-          print("* Peringatan *\nData harus diisi\n")
+          print("* Peringatan *\nData harus diisi")
+      elif aksiTambah == "3": #withKey
+        if llist.isEmpty() == False:
+          dataKey = input("Masukkan kata kunci data yang ingin ditambah setelahnya: ")
+          findData = llist.searchData(dataKey)
+          if bool(findData):
+            while True:
+              data = input("Masukkan data: ")
+              if data:
+                llist.insertAtAfter(dataKey, data)
+                print(f'Data {data} berhasil ditambahkan setelah {dataKey}')
+                break
+              else:
+                print("* Peringatan *\nData harus diisi")
+          else:
+            print(f'Data {data} tidak ditemukan')
+        else:
+          print('Data kosong')
+      elif aksiTambah == "4":
+        menuUtama()
+      else: # aksi tidak valid
+        print("Pilihan tidak valid") 
     elif aksi == "2": # hapus data
       if llist.isEmpty() == False:
-        data = input("Masukkan data yang ingin dihapus: ")
-        findData = llist.searchData(data)
-        if bool(findData):
-          llist.deleteData(data)
-          print(f'Data {data} berhasil dihapus\n')
-          arrDelete.append(data)
-          aksiTerakhir = '2'
-        else:
-          print(f'Data {data} tidak ditemukan\n')
+        aksiHapus = pilihAksiHapus()
+        if aksiHapus == "1": #depan
+          data = llist.deleteFirst()
+          print(f'Data {data} berhasil dihapus')
+        elif aksiHapus == "2": #belakang
+          if llist.getCount() > 1:
+            data = llist.deleteLast()
+          else:
+            data = llist.deleteFirst()
+          print(f'Data {data} berhasil dihapus')
+        elif aksiHapus == "3": #key
+          data = input("Masukkan data yang ingin dihapus: ")
+          findData = llist.searchData(data)
+          if bool(findData):
+            llist.deleteData(data)
+            print(f'Data {data} berhasil dihapus')
+          else:
+            print(f'Data {data} tidak ditemukan')
+        elif aksiHapus == "4":
+          menuUtama()
+        else: # aksi tidak valid
+          print("Pilihan tidak valid")  
       else:
-        print('Data kosong\n')
+        print('Data kosong')
     elif aksi == "3": # tampilkan data
       if llist.isEmpty() == False:
-        if aksiTerakhir == '1':
-          printTitle(arrInsert, aksiTerakhir)
-        elif aksiTerakhir == '2':
-          printTitle(arrDelete, aksiTerakhir)
-        else:
-          print('Isi data saat ini: ')
-        llist.sortDataToArray()
-        aksiTerakhir = '3'
+        llist.printListOrder()
       else:
         print("Data kosong")
-      print('')
     else: # aksi tidak valid
-      print("Pilihan tidak valid\n")
+      print("Pilihan tidak valid")
     aksi = menuUtama()
   print("Terima kasih telah menggunakan program ini\n")
 main()

@@ -71,6 +71,7 @@ def hapus(queue):
 def tampil(queue):
   print('Isi Antrian: ')
   size = sizeQueue(queue)
+  queue.sort()
   if size != 0:
     i = 0
     while i < size:

@@ -23,7 +23,7 @@ def pilihMenu():
   pilihan = input('Masukkan Pilihanmu (1, 2, 3, atau 4): ')
   return pilihan
 
-def tambah(array, limit):
+def tambah(array):
   size = sizearray(array)
   reconfirm = True
   while reconfirm:

@@ -11,6 +11,9 @@ def removeItem(array, item = ''):
   else:
     return array.pop(0)
 
+def sizearray(array):
+  return len(array)
+
 def pilihMenu():
   print('Menu:')
   print('1. Tambah Data')
@@ -21,6 +24,7 @@ def pilihMenu():
   return pilihan
 
 def tambah(array, limit):
+  size = sizearray(array)
   reconfirm = True
   while reconfirm:
     item = input(f'Masukkan data pada indeks ke-{size + 1}: ')
@@ -84,12 +88,11 @@ def main():
 =====================================================================
 """)
   array = createArray()
-  limit = input('Masukkan limit antrian: ')
   lanjut = True
   while lanjut:
     pilihan = pilihMenu()
     if pilihan == '1': # Tambah Data
-      tambah(array, limit)
+      tambah(array)
     elif pilihan == '2': # Hapus Data
       hapus(array)
     elif pilihan == '3': # Tampil Data

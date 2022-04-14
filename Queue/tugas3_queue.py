@@ -11,9 +11,6 @@ def removeItem(array, item = ''):
   else:
     return array.pop(0)
 
-def sizearray(array):
-  return len(array)
-
 def pilihMenu():
   print('Menu:')
   print('1. Tambah Data')
@@ -24,27 +21,22 @@ def pilihMenu():
   return pilihan
 
 def tambah(array, limit):
-  size = sizearray(array)
-  if size == int(limit):
-    print("* Peringatan *")
-    print('Antrian sudah penuh !!\n')
-  else:
-    reconfirm = True
-    while reconfirm:
-      item = input(f'Masukkan data pada indeks ke-{size + 1}: ')
-      if item:
-        if item in array:
-          print("* Peringatan *")
-          print(f'Data {item} sudah berada di dalam antrian. Mohon masukkan data yang berbeda')
-        else:
-          array.append(item)
-          print("* Info *")
-          print(f'Data {item} berhasil masuk ke dalam antrian\n')
-          reconfirm = False
-      else:
+  reconfirm = True
+  while reconfirm:
+    item = input(f'Masukkan data pada indeks ke-{size + 1}: ')
+    if item:
+      if item in array:
         print("* Peringatan *")
-        print('Data yang ingin ditambahkan tidak boleh kosong\n')
+        print(f'Data {item} sudah berada di dalam antrian. Mohon masukkan data yang berbeda')
+      else:
+        array.append(item)
+        print("* Info *")
+        print(f'Data {item} berhasil masuk ke dalam antrian\n')
         reconfirm = False
+    else:
+      print("* Peringatan *")
+      print('Data yang ingin ditambahkan tidak boleh kosong\n')
+      reconfirm = False
 
 def hapus(array):
   reconfirm = True

@@ -41,5 +41,5 @@ def main():
 				konfirmasi = False
 			elif konfirmasi == '2':
 				print('Program diakhiri. Sekian, terima kasih\n')
-				konfirmasi = ingin_lanj
+				konfirmasi = ingin_lanjut = False
 main()

@@ -65,7 +65,7 @@ class LinkedList:
       temp = temp.next
     return count
 
-  def sortDataToArray(self):
+  def sortData(self):
     size = self.getCount()
     arr = []
     temp = self.head
@@ -82,22 +82,6 @@ def pilihAksi():
   print("Daftar Aksi:\n1. Tambah Data\n2. Hapus Data\n3. Tampilkan Data\n4. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
   return pilihan
-
-def printTitle(arr, aksi):
-  txt = ''
-  i = 0
-  size = len(arr)
-  while i < size:
-    if i != size - 1:
-      txt += arr[i] + ', '
-    else:
-      txt += arr[i]
-    i+=1
-  arr.clear()
-  if aksi == '1':
-    print(f'Isi data setelah {txt} ditambah: ')
-  elif aksi == '2':
-    print(f'Isi data setelah {txt} dihapus: ')
     
 def main():
   print("""========================================================================================
@@ -106,9 +90,6 @@ def main():
 ========================================================================================""")
   llist = LinkedList()
   aksi = pilihAksi()
-  arrInsert = []
-  arrDelete = []
-  aksiTerakhir = ''
   while aksi != "4": # selama aksi bukan 4
     if aksi == "1": # tambah data
       while True:
@@ -116,8 +97,6 @@ def main():
         if data:
           llist.insertAtEnd(data)
           print(f'Data {data} berhasil ditambahkan\n')
-          arrInsert.append(data)
-          aksiTerakhir = '1'
           break
         else:
           print("* Peringatan *\nData harus diisi\n")
@@ -128,22 +107,14 @@ def main():
         if bool(findData):
           llist.deleteData(data)
           print(f'Data {data} berhasil dihapus\n')
-          arrDelete.append(data)
-          aksiTerakhir = '2'
         else:
           print(f'Data {data} tidak ditemukan\n')
       else:
         print('Data kosong\n')
     elif aksi == "3": # tampilkan data
       if llist.isEmpty() == False:
-        if aksiTerakhir == '1':
-          printTitle(arrInsert, aksiTerakhir)
-        elif aksiTerakhir == '2':
-          printTitle(arrDelete, aksiTerakhir)
-        else:
-          print('Isi data saat ini: ')
-        llist.sortDataToArray()
-        aksiTerakhir = '3'
+        print('Isi data saat ini: ')
+        llist.sortData()
       else:
         print("Data kosong")
       print('')

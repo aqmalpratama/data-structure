@@ -34,14 +34,13 @@ def main():
     string = input("Masukkan string: ")
     if string:
       print('')
-      print(f'Isi string sebelum di balik: {string}')
       ll.reverseString(string)
       print(f'Hasil membalikkan string:')
       ll.printList()
       print('')
       break
     else:
-      print('* Peringatan *\nString tidak boleh kosong!')
+      print('* Peringatan *\nString tidak boleh kosong!\n')
 
   while True:
     print("""Pilih Aksi:

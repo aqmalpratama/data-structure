@@ -7,22 +7,19 @@ class LinkedList:
   def __init__(self):
     self.head = None
 
-  def insertAtEnd(self, data):
+  def insertAtBeginning(self, data):
     new_node = Node(data)
-    if self.head is None:
-      self.head = new_node
-      return
-    last = self.head
-    while (last.next):
-      last = last.next
-    last.next = new_node
+    new_node.next = self.head
+    self.head = new_node
 
   def printList(self):
     temp = self.head
     if temp:
+      i = 1
       while (temp):
-        print(temp.data)
+        print(f'urutan ke-{i} yaitu {temp.data}')
         temp = temp.next
+        i += 1
     else:
       print("* Info *\nTumpukan kosong")
 
@@ -41,14 +38,13 @@ def main():
         while jmlMaksimal:
           data = input(f"Masukkan data ke-{i}: ")
           if data:
-            ll.insertAtEnd(data)
+            ll.insertAtBeginning(data)
             print(f'Data {data} telah dimasukkan ke tumpukan')
             print('')
             jmlMaksimal -= 1
             i += 1
           else:
             print('* Peringatan *\nData tidak boleh kosong!\n')
-        
         print("Isi tumpukan dari atas ke bawah:")
         ll.printList()
         print('')

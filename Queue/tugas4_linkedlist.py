@@ -9,7 +9,6 @@ class LinkedList:
   def __init__(self):
     self.head = None
 
-  # Insert at the end
   def insertAtEnd(self, kode, nama):
     new_node = Node(kode, nama)
     if self.head is None:
@@ -20,7 +19,6 @@ class LinkedList:
       last = last.next
     last.next = new_node
 
-  # Deleting
   def deleteByCode(self, kode):
     current = self.head
     if current is not None:
@@ -38,7 +36,6 @@ class LinkedList:
     prev.next = current.next
     current = None
 
-  # Search an element
   def searchByCode(self, kode):
     current = self.head
     while current is not None:
@@ -47,7 +44,6 @@ class LinkedList:
       current = current.next
     return False
 
-  # Print the linked list
   def printList(self):
     temp = self.head
     while (temp):

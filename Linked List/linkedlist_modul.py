@@ -1,8 +1,7 @@
 # Create a node
 class Node:
-  def __init__(self, kode, nama):
-    self.kode = kode
-    self.nama = nama
+  def __init__(self, data):
+    self.data = data
     self.next = None
 
 class LinkedList:
@@ -10,23 +9,25 @@ class LinkedList:
     self.head = None
 
   # Insert at the beginning
-  def insertAtBeginning(self, kode, nama):
-    new_node = Node(kode, nama)
+  def insertAtBeginning(self, data):
+    new_node = Node(data)
     new_node.next = self.head
     self.head = new_node
 
-  # Insert after a node
-  def insertAfter(self, prev_node, new_data):
-    if prev_node is None:
-      print("The given previous node must inLinkedList.")
-      return
-    new_node = Node(new_data)
-    new_node.next = prev_node.next
-    prev_node.next = new_node
+  def insertAtAfter(self, key, data):
+    new_node = Node(data)
+    current = self.head
+    while current is not None:
+      if current.data == key:
+        new_node.next = current.next
+        current.next = new_node
+        return
+      current = current.next
+    return False
 
   # Insert at the end
-  def insertAtEnd(self, kode, nama):
-    new_node = Node(kode, nama)
+  def insertAtEnd(self, data):
+    new_node = Node(data)
     if self.head is None:
         self.head = new_node
         return
@@ -36,7 +37,7 @@ class LinkedList:
     last.next = new_node
 
   # Deleting
-  def deleteByCode(self, kode):
+  def deleteData(self, data):
     current = self.head
     if current is not None:
       if current.data == data:
@@ -53,40 +54,52 @@ class LinkedList:
     prev.next = current.next
     current = None
 
+  def deleteFirst(self):
+    temp = self.head
+    data = temp.data
+    self.head = temp.next
+    temp = None
+    return data
+
+  def deleteLast(self):
+    temp = self.head
+    while (temp.next):
+      prev = temp
+      temp = temp.next
+    data = temp.data
+    prev.next = None
+    temp = None
+    return data
+
   # Search an element
-  def searchByCode(self, key):
+  def searchData(self, key):
     current = self.head
     while current is not None:
-      if current.kode == key:
+      if current.data == key:
         return current
       current = current.next
     return False
 
-  # Print the linked list
-  def printList(self):
+  def printFromFirst(self):
     temp = self.head
+    count = 1
     while (temp):
-      print(f'{temp.kode} : {temp.nama}')
+      print(f"No.{count} {temp.data}")
+      count+=1
       temp = temp.next
 
-  # Sort the linked list
-  def sortLinkedList(self, head):
-    current = head
-    index = Node(None)
-
-    if head is None:
-      return
-    else:
-      while current is not None:
-        # index points to the node next to current
-        index = current.next
-
-        while index is not None:
-          if current.data > index.data:
-              current.data, index.data = index.data, current.data
-
-          index = index.next
-        current = current.next
+  def printFromLast(self):
+    temp = self.head
+    arr = []
+    while (temp):
+      arr.append(temp.data) 
+      temp = temp.next
+    count = 1
+    i = len(arr)
+    while (i != 0):
+      print(f"No.{count} {arr[i-1]}")
+      count+=1
+      i-=1
 
   def isEmpty(self):
     temp = self.head
@@ -103,15 +116,5 @@ class LinkedList:
       temp = temp.next
     return count
 
-  def sortDataToArray(self):
-    size = self.getCount()
-    arr = []
-    temp = self.head
-    while (temp):
-      arr.append(temp.data)
-      temp = temp.next
-    arr.sort()
-    i = 0
-    while (i < size):
-      print(f'{arr[i]}')
-      i += 1
+ll = LinkedList()
+ll.insertAtEnd('')

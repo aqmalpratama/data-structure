@@ -126,15 +126,24 @@ def main():
 -------------------------- Selamat Datang ------------------------------
 ------------------- Program Postfix (LinkedList) -----------------------
 ========================================================================""")
+  ableInfix = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '(', ')', '^', '%']
+  error = False
   while True:
     stringInfix = input("Masukkan ekspresi infix : ")
+    stringInfix = stringInfix.replace(' ', '')
     if stringInfix:
-      print(f"Ekspresi infix \t\t: {stringInfix}")
-      print(f"Ekspresi postfix \t: {infixToPostfix(stringInfix)}")
-      print(f"Hasil nilai ekspresi \t: {evaluate_postfix(infixToPostfix(stringInfix))}")
-      break
+      for i in range(len(stringInfix)):
+        if stringInfix[i] not in ableInfix:
+          print("Ekspresi tidak valid")
+          error = True
+          break
+      if error == False:
+        print("Ekspresi infix : ", stringInfix)
+        print("Ekspresi postfix : ", infixToPostfix(stringInfix))
+        print("Hasil ekspresi : ", evaluate_postfix(infixToPostfix(stringInfix)))
+        break
     else:
-      print("Ekspresi tidak boleh kosong")
+      print("Ekspresi tidak boleh kosong\n")
   
   while True:
     print('\n--- Pilihan ---')

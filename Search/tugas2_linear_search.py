@@ -1,7 +1,7 @@
 def linearSearch(arr, n, target):
   for i in range(n):
     if arr[i] == target:
-        return i
+			return i
   return -1
 
 def main():

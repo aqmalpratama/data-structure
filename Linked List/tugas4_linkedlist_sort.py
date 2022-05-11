@@ -113,7 +113,9 @@ def main():
         print('Data kosong\n')
     elif aksi == "3": # tampilkan data
       if llist.isEmpty() == False:
-        print('Isi data saat ini: ')
+        print('Isi data awal: ')
+        llist.printList()
+        print('\nIsi data saat setelah diururtkan: ')
         llist.sortData()
       else:
         print("Data kosong")

@@ -52,7 +52,7 @@ def main():
       main()
     elif konfirmasi == '2':
       print('Program diakhiri. Sekian, terima kasih')
-      break
+      exit()
     else:
       print('* Peringatan *')
       print(f'Mohon maaf, ketik dengan pilihan yang tersedia')

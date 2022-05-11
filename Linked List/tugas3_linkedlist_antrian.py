@@ -71,10 +71,10 @@ def pilihAksi():
 
 def main():
   print("""
-========================================================================
--------------------------- Selamat Datang ------------------------------
----- Program Menambah, Menemukan, dan Menampilkan Data (LinkedList) ----
-========================================================================""")
+==========================================================================
+--------------------------- Selamat Datang -------------------------------
+----- Program Menambah, Menghapus, dan Menampilkan Data (LinkedList) -----
+==========================================================================""")
   while True:
     jmlMaksimal = input("Masukkan jumlah maksimal data: ")
     if jmlMaksimal:

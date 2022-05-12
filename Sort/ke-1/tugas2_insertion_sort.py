@@ -63,8 +63,8 @@ def main():
         clear = False
       else:
         print("Pilihan tidak valid\n")
-    try_again = input("Ingin menjalankan program kembali? (Y/N): ").upper
-    if try_again == "N":
+    try_again = input("Ingin menjalankan program kembali? (Y/N): ")
+    if try_again.upper() == "N":
       state_try = False
-      
+      print("Terima kasih sudah menggunakan program ini.")
 main()

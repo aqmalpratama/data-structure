@@ -22,43 +22,56 @@ def main():
   mahasiswa = createStack()
   cobaLagi = True
   while cobaLagi == True:
-    print('\n--------- Program Input Nama Secara Dinamis --------------')
+    print()
     maksimal = input('Masukkan maksimal jumlah mahasiswa yang dapat ditampung pada matkul SDA: ')
-    if maksimal:
+    if bool(maksimal) == False:
+      print('Input harus diisi')
+      main()
+    
+    if int(maksimal) <= 0:
+      print('Input harus lebih dari 0')
+      main()
+    
+    if bool(maksimal) == True and int(maksimal) > 0:
       maksimal = int(maksimal)
-      if maksimal > 0:
-        for i in range(maksimal):
-          nama = input(f'Masukkan nama mahasiswa ke-{i+1} : ')
+      # for i in range(maksimal):
+      #   nama = input(f'Masukkan nama mahasiswa ke-{i+1} : ')
+      #   push(mahasiswa, nama)
+      nomor = 0
+      while nomor < maksimal:
+        nama = input(f'Masukkan nama mahasiswa ke-{nomor + 1} : ')
+        if bool(nama) == False:
+          print('Input harus diisi')
+        else:
           push(mahasiswa, nama)
+          nomor += 1
+      print(f"\nDaftar mahasiswa pada matkul SDA: ")
+      for i in range(maksimal):
+        print(f'Nama mahasiswa ke-{i+1} : {pop(mahasiswa)}')
+        
+      reconfirm = True
+      while reconfirm:
+        print('\n--- Pilihan ---')
+        print('1. Program akan dijalankan kembali')
+        print('2. Program akan diakhiri')
+        konfirmasi = input("Apakah Anda ingin menjalankan program ini kembali? (Pilih 1 atau 2 lalu tekan Enter): ")
+        if konfirmasi == '1':
+          print("Baik, program dijalankan kembali.\n")
+          reconfirm = False
+        elif konfirmasi == '2':
+          print('Program diakhiri. Sekian, terima kasih.\n')
+          exit()
+        else:
+          print('* Peringatan *')
+          print('Pilihan tidak valid')
 
-        print(f"\nDaftar mahasiswa pada matkul SDA: ")
-        for i in range(maksimal):
-          print(f'Nama mahasiswa ke-{i+1} : {pop(mahasiswa)}')
-          
-        reconfirm = True
-        while reconfirm == True:
-          print('\n--- Pilihan ---')
-          print('1. Program akan dijalankan kembali')
-          print('2. Program akan diakhiri')
-          konfirmasi = input("Apakah Anda ingin menjalankan program ini kembali? (ketik 1 atau 2): ")
-          if konfirmasi == '1':
-            print("Baik, program dijalankan kembali.\n")
-            reconfirm = False
-            cobaLagi = True
-          elif konfirmasi == '2':
-            print('Program diakhiri. Sekian, terima kasih.\n')
-            reconfirm = cobaLagi = False
-          else:
-            print('* Peringatan *')
-            print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia.')
-            print('Mohon ketik dengan pilihan yang tersedia.')
-            reconfirm = True
-      else:
-        print('* Peringatan *')
-        print('Jumlah maksimal mahasiswa harus lebih dari 0.')
-    else:
-      print('* Peringatan *')
-      print('Jumlah maksimal mahasiswa harus diisi.')
-
+print()
+print("""--- TUGAS 1 NO 3 - IMPLEMENTASI INPUT DINAMIS NAMA DENGAN STACK ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()
     

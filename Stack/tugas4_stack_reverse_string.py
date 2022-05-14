@@ -1,3 +1,5 @@
+import time
+
 def createStack():
   stack = []
   return stack
@@ -23,8 +25,11 @@ def reverseStringStack(string):
   for i in range(length):
     push(stack, string[i])
   string = ""
+  print("Proses membalik kata atau kalimat")
   for i in range(length):
     string += pop(stack)
+    time.sleep(0.2)
+    print(string)
   return string
 
 def main():
@@ -40,20 +45,18 @@ def main():
         print('Kata atau kalimat tidak boleh kosong.')
     print(f"Kalimat yang telah dibalik : {reverseStringStack(inputString)}")
     reconfirm = True
-    while reconfirm == True:
+    while reconfirm:
       print('\n--- Pilihan ---')
       print('1. Program akan dijalankan kembali')
       print('2. Program akan diakhiri')
-      konfirmasi = input("Apakah Anda ingin menjalankan program ini kembali? (ketik 1 atau 2): ")
+      konfirmasi = input("Apakah Anda ingin menjalankan program ini kembali? (ketik 1 atau 2 lalu tekan Enter): ")
       if konfirmasi == '1':
         print("Baik, program dijalankan kembali\n")
         reconfirm = False
       elif konfirmasi == '2':
-        print('Program diakhiri. Sekian, terima kasih\n')
+        print('Program diakhiri. terima kasih\n')
         reconfirm = cobaLagi = False
       else:
         print('* Peringatan *')
-        print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia')
-        print('Mohon ketik dengan pilihan yang tersedia')
-        reconfirm = True
+        print(f'Pilihan tidak valid')
 main()

@@ -49,7 +49,7 @@ def decimalToHexadecimal(angka):
 
 def pilihanAksi():
   print("\nDaftar Aksi:\n1. Konversi ke bilangan biner\n2. Konversi ke bilangan oktal\n3. Konversi ke bilangan hexadesimal\n4. Ganti bilangan desimal\n5. Keluar")
-  pilihan = input("Masukkan pilihan Anda: ")
+  pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, 5, atau 6 dan tekan Enter): ")
   return pilihan
 
 def main():

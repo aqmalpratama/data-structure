@@ -139,4 +139,13 @@ def main():
   print(50*"=")
   print("Terimakasih telah menggunakan program ini >_<")
   print(50*"=")
+
+print()
+print("""---   TUGAS 1 NO 2 - KONVERSI BILANGAN DESIMAL DENGAN STACK MENGGUNAKAN METODE OBJEK   ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()

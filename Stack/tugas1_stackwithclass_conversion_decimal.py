@@ -52,56 +52,56 @@ class Converter:
     while stack.is_empty() != True:
       result += str(outList[stack.pop()])
     result = result[::1]
-    return result
+    return result 
 
-def programController():
-  print("""
-==================================================
------------------ Selamat Datang -----------------
------- Program untuk mengkonfersi bilangan -------
-==================================================
-  """)
-  print(50*"=")
-  input_user = input("Masukkan angka yang akan dikonversi: ")
-  if input_user == "":
-    print("\nTidak ada data yang dimasukkan!")
-    print(50*"=")
-    return
-  elif input_user.isnumeric() == False:
-    print(f"\nData yang dimasukkan ({input_user}) bukanlah angka!")
-    return
-  print(50*"=")
-  convert = Converter(input_user)
-  print(f"""
-Angka [Desimal] yang dimasukan adalah : {input_user}
-Hasil Konversi:
- - Desimal ke Binary      : {convert.desToBin()}
- - Desimal ke Oktal       : {convert.desToOct()}
- - Desimal ke Hexadesimal : {convert.desToHex()}
-  """)
+def pilihanAksi():
+  print("\nDaftar Aksi Konversi:\n1. Desimal ke biner\n2. Desimal ke oktal\n3. Desimal ke hexadesimal\n4. Ganti bilangan desimal\n5. Keluar")
+  pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, 5, atau 6 dan tekan Enter): ")
+  return pilihan
 
 def main():
-  state = True
-  while state:
-    programController()
-    yesList = ["Y", 'y', "1"]
-    noList = ["N", 'n', "0"]
-    stateTry = True
-    while stateTry:
-      feedback = input("Apakah ingin menjalankan program ini lagi? (Y/N): ")
-      if feedback in yesList or feedback in noList:
-        stateTry = False
-        break
-      print(50*"=")
-      print("Perintah tidak sesuai!")
-      print("Silahkan coba kembali!")
-      print(50*"=")
-    if feedback in yesList:
-      state = True
-    elif feedback in noList:
-      state = False
-  print(50*"=")
-  print("Terimakasih telah menggunakan program ini >_<")
-  print(50*"=")
+  print()
+  bilDesimal = input("Masukkan bilangan desimal: ")
 
+  if bool(bilDesimal) == False:
+    print('\n* Peringatan *')
+    print('Bilangan desimal tidak boleh kosong')
+    main()
+    
+  if bool(bilDesimal) and bool(bilDesimal.isnumeric()) == False:
+    print('\n* Peringatan *')
+    print('Bilangan desimal harus diisi dengan angka')
+    main()
+
+  if bilDesimal and bool(bilDesimal.isnumeric()):
+    bilDesimal = int(bilDesimal)
+    convert = Converter(bilDesimal)
+    ulang = True
+    while ulang:
+      pilihan = pilihanAksi()
+      if pilihan == '1':
+        print(f"\nBilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke biner: {convert.desToBin()}")
+      elif pilihan == '2':
+        print(f"\nBilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke oktal: {convert.desToOct()}")
+      elif pilihan == '3':
+        print(f"\nBilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke hexadesimal: {convert.desToHex()}")
+      elif pilihan == '4':
+        main()
+      elif pilihan == '5':
+        print('Progam diakhiri, terima kasih >_<')
+        exit()
+      else:
+        print('\nPilihan tidak valid')
+
+print()
+print("""---   TUGAS 1 NO 2 - KONVERSI BILANGAN DESIMAL DENGAN STACK MENGGUNAKAN METODE OBJEK   ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()

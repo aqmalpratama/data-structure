@@ -71,5 +71,14 @@ def main():
     else:
       print('* Peringatan *')
       print('Jumlah maksimal mahasiswa harus diisi.')
+
+print()
+print("""---   TUGAS 1 NO 2 - INPUT DAFTAR NAMA DENGAN STACK   ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()
     

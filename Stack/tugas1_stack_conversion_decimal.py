@@ -45,47 +45,56 @@ def decimalToHexadecimal(angka):
     angka = angka // 16
   while isEmpty(stack) != True:
     resConversion += str(conversion_table[pop(stack)])
-  resConversion = resConversion[::-1]
   return resConversion
 
+def pilihanAksi():
+  print("\nDaftar Aksi:\n1. Konversi ke bilangan biner\n2. Konversi ke bilangan oktal\n3. Konversi ke bilangan hexadesimal\n4. Ganti bilangan desimal\n5. Keluar")
+  pilihan = input("Masukkan pilihan Anda: ")
+  return pilihan
+
 def main():
-  cobaLagi = True
-  while cobaLagi == True:
-    print("""
-======================================================================================
--------------------------------- Selamat Datang --------------------------------------
------- Program Mengkonversi Bilangan Desimal ke Biner, Oktal, dan Heksadesimal -------
-======================================================================================
-""")
-    bilDesimal = input("Masukkan Bilangan Desimal: ")
-    if bilDesimal:
-      if bilDesimal.isnumeric():
-        bilDesimal = int(bilDesimal)
-        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToBinary(bilDesimal)}')
-        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToOctal(bilDesimal)}')
-        print(f'Hasil konversi bilangan desimal {bilDesimal} ke bilangan biner adalah {decimalToHexadecimal(bilDesimal)}')
-        reconfirm = True
-        while reconfirm:
-          print('\n--- Pilihan ---')
-          print('1. Program akan dijalankan kembali')
-          print('2. Program akan diakhiri')
-          konfirmasi = input("Apakah Anda ingin menjalankan program ini kembali? (ketik 1 atau 2): ")
-          if konfirmasi == '1':
-            print("Baik, program dijalankan kembali\n")
-            reconfirm = False
-          elif konfirmasi == '2':
-            print('Program diakhiri. Sekian, terima kasih')
-            reconfirm = cobaLagi = False
-          else:
-            print('* Peringatan *')
-            print(f'Mohon maaf, pilihan {konfirmasi} tidak tersedia')
-            print('Mohon ketik dengan pilihan yang tersedia')
+  print()
+  bilDesimal = input("Masukkan bilangan desimal: ")
+
+  if bool(bilDesimal) == False:
+    print('* Peringatan *')
+    print('Bilangan desimal tidak boleh kosong')
+    main()
+    
+  if bool(bilDesimal) and bool(bilDesimal.isnumeric()) == False:
+    print('* Peringatan *')
+    print('Bilangan desimal harus diisi dengan angka')
+    main()
+
+  if bilDesimal and bool(bilDesimal.isnumeric()):
+    bilDesimal = int(bilDesimal)
+    
+    ulang = True
+    while ulang:
+      pilihan = pilihanAksi()
+      if pilihan == '1':
+        print(f"Bilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke biner: {decimalToBinary(bilDesimal)}")
+      elif pilihan == '2':
+        print(f"Bilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke oktal: {decimalToOctal(bilDesimal)}")
+      elif pilihan == '3':
+        print(f"Bilangan desimal: {bilDesimal}")
+        print(f"Hasil konversi ke hexadesimal: {decimalToHexadecimal(bilDesimal)}")
+      elif pilihan == '4':
+        main()
+      elif pilihan == '5':
+        print('Progam diakhiri, terima kasih')
+        exit()
       else:
-        print('* Peringatan *')
-        print('Bilangan desimal harus diisi dengan angka')
-        print('Program dijalankan kembali')
-    else:
-      print('* Peringatan *')
-      print('Bilangan desimal tidak boleh kosong')
-      print('Program dijalankan kembali')
+        print('\nPilihan tidak valid')
+
+print()
+print("""---   TUGAS 1 NO 1 - KONVERSI BILANGAN DESIMAL DENGAN STACK   ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()

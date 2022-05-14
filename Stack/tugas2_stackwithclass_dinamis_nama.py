@@ -16,12 +16,14 @@ class Stack:
     return len(self.items)
 
 # Maksimal Data Nama Yang dapat Ditampung
-Max_Size_Name = 10
-# def MaxSizeData():
-#   user_input = input("Masukkan jumlah data yang ingin disimpan: ")
-#   global Max_Size_Name
-#   Max_Size_Name = user_input
-  
+Max_Size_Name = 0
+def MaxSizeData():
+  global Max_Size_Name
+  while Max_Size_Name <= 0:
+    user_input = input("Masukkan jumlah data yang ingin disimpan: ")
+    Max_Size_Name = int(user_input)
+    if Max_Size_Name <= 0:
+      print("> Data yang dimasukkan tidak boleh kurang dari satu!")
 
 class Command:
   def _init_(self, data):
@@ -33,7 +35,7 @@ class Command:
 
   def start(self):
     self.startStatus = True
-    # MaxSizeData()
+    MaxSizeData()
     print(f"\nMasukan Data Secara Manual, Maksimal {Max_Size_Name}!")
     print(50*"=")
     count = 1

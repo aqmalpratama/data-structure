@@ -4,9 +4,9 @@ def selectionSort(array):
     min_index = i
     for j in range(i + 1, len(array)):
       if array[j] < array[min_index]:
-        time.sleep(0.2)
-        print(array)
         min_index = j
+      time.sleep(0.2)
+      print(array)
     array[i], array[min_index] = array[min_index], array[i]
   return array
 
@@ -15,9 +15,9 @@ def rev_selectionSort(array):
     min_index = i
     for j in range(i + 1, len(array)):
       if array[j] > array[min_index]:
-        time.sleep(0.2)
-        print(array)
         min_index = j
+      time.sleep(0.2)
+      print(array)
     array[i], array[min_index] = array[min_index], array[i]
   return array
 

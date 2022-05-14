@@ -2,10 +2,10 @@ def createQueue():
   queue = []
   return queue
 
-def addItem(queue, item):
+def enqueue(queue, item):
   queue.append(item)
 
-def removeItem(queue, item = ''):
+def dequeue(queue, item = ''):
   if item:
     return queue.remove(item)
   else:
@@ -19,8 +19,9 @@ def pilihMenu():
   print('1. Tambah Data')
   print('2. Hapus Data')
   print('3. Tampilkan Data')
-  print('4. Selesai')
-  pilihan = input('Masukkan Pilihanmu (1, 2, 3, atau 4): ')
+  print('4. Kosongkan Antrian')
+  print('5. Selesai')
+  pilihan = input('Masukkan Pilihanmu (1, 2, 3, atau 4 lalu tekan Enter): ')
   return pilihan
 
 def tambah(queue, limit):
@@ -31,13 +32,13 @@ def tambah(queue, limit):
   else:
     reconfirm = True
     while reconfirm:
-      item = input(f'Masukkan data pada indeks ke-{size + 1}: ')
+      item = input(f'Masukkan data ke-{size + 1}: ')
       if item:
         if item in queue:
           print("* Peringatan *")
           print(f'Data {item} sudah berada di dalam antrian. Mohon masukkan data yang berbeda')
         else:
-          queue.append(item)
+          enqueue(queue, item)
           print("* Info *")
           print(f'Data {item} berhasil masuk ke dalam antrian\n')
           reconfirm = False
@@ -53,7 +54,7 @@ def hapus(queue):
       item = input('Data yang ingin dihapus: ')
       if item:
         if item in queue:
-          removeItem(queue, item)
+          dequeue(queue, item)
           print('* Info *')
           print(f'Data {item} berhasil dihapus dari antrian\n')
           reconfirm = False
@@ -86,12 +87,7 @@ def tampil(queue):
   print()
 
 def main():
-  print("""
-===================================================================
------------------------- Selamat Datang ---------------------------
----- Program Menambah, Menghapus, dan Menampilkan Data (Queue) ----
-===================================================================
-""")
+  print()
   queue = createQueue()
   limit = input('Masukkan limit antrian: ')
   lanjut = True
@@ -103,10 +99,24 @@ def main():
       hapus(queue)
     elif pilihan == '3': # Tampil Data
       tampil(queue)
-    elif pilihan == '4': # Program Selesai
+    elif pilihan == '4': # Mengulang Antrian
+      print('* Info *')
+      print('Antrian telah dikosongkan dan program dijalankan ulang')
+      main()
+    elif pilihan == '5': # Program Selesai
       lanjut = False
       print('Program diakhiri. Sekian, terima kasih.\n')
+      exit()
     else:
       print("* Peringatan *")
       print('Harap memilih pilihan yang tersedia!\n')
+
+print()
+print("""---   TUGAS 2 NO 2 - IMPLEMENTASI ANTRIAN DENGAN KELAS QUEUE   ---""")
+print("ANGGOTA KELOMPOK 3: ")
+print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+print("3. RAWDO MADINA                      - 1313621028") 
+print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+print("5. SALWA TSABITAH                    - 1313621042") 
 main()

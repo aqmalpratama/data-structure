@@ -67,7 +67,7 @@ def main():
       if sizeArray(arr) == 0:
         break
       else:
-        print(f'{i + 1}. {removeItem(arr, arr[i])}')
+        print(f'{i + 1}. {removeItem(arr)}')
       i+=1
 
     reconfirm = True

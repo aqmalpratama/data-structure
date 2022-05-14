@@ -51,42 +51,47 @@ class LinkedList:
       temp = temp.next
 
 def pilihAksi():
-  print("Daftar Aksi:\n 1. Tambah Data\n 2. Temukan Data\n 3. Hapus Data\n 4. Tampilkan Data\n 5. Keluar")
-  pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, atau 5): ")
+  print("Daftar Aksi:\n1. Tambah Data\n2. Temukan Data\n3. Hapus Data\n4. Tampilkan Data\n5. Keluar")
+  pilihan = input("Masukkan pilihan Anda (1, 2, 3, 4, atau 5 lalu tekan Enter): ")
   return pilihan
 
 def main():
-  print("""
-========================================================================
--------------------------- Selamat Datang ------------------------------
----- Program Menambah, Menemukan, dan Menampilkan Data (LinkedList) ----
-========================================================================""")
+  print()
+  print("""---   TUGAS 2 NO 4 - IMPLEMENTASI INPUT 2 DATA(KODE DAN NAMA) DENGAN LINKED LIST   ---""")
+  print("ANGGOTA KELOMPOK 3: ")
+  print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
+  print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
+  print("3. RAWDO MADINA                      - 1313621028") 
+  print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
+  print("5. SALWA TSABITAH                    - 1313621042") 
+
   llist = LinkedList()
-  print("* Format Pengisian Data*\nKode harus 3 huruf kapital\nNama harus diawali dengan kapital")
+  print("\n* Format Pengisian Data*\nKode harus 3 huruf kapital\nNama harus diawali dengan kapital\n")
   aksi = pilihAksi()
   while aksi != "5": # selama aksi bukan 5
     if aksi == "1": # tambah data
       while True:
         kode = input("Masukkan kode: ")
-        if kode:
-          if len(kode) == 3:
-            if kode[0].isupper() and kode[1].isupper() and kode[2].isupper():
-              nama = input("Masukkan nama: ")
-              if nama:
-                if nama[0].isupper():
-                  llist.insertAtEnd(kode, nama)
-                  print("Data berhasil ditambahkan\n")
-                  break
-                else:
-                  print("Nama harus diawali dengan kapital\n")
-              else:
-                print("Nama tidak boleh kosong\n")
-            else:
-              print("Kode harus 3 huruf kapital\n")
-          else:
-            print("Kode harus 3 huruf kapital\n")
-        else:
-          print("Kode tidak boleh kosong\n")
+        if bool(kode) == False:
+          print("Kode tidak boleh kosong")
+        if bool(kode) == True and len(kode) != 3:
+          print("Kode harus 3 huruf kapital\n")
+        if bool(kode) == True and len(kode) == 3 and kode.isupper() == False:
+          print("Kode harus 3 huruf kapital\n")
+
+        if bool(kode) == True and (len(kode) == 3 and kode.isupper() == True):
+          nama = input("Masukkan nama: ")
+          if bool(nama) == False:
+            print("Nama tidak boleh kosong")
+            print("Harap isi kode kembali\n")
+          if bool(nama) == True and nama[0].isupper() == False:
+            print("Nama harus diawali dengan kapital")
+            print("Harap isi kode kembali\n")
+          if bool(nama) == True and nama[0].isupper() == True:
+            llist.insertAtEnd(kode, nama)
+            print("Data berhasil ditambahkan\n")
+            break
+    
     elif aksi == "2": # temukan data
       kode = input("Masukkan kode yang ingin ditemukan: ")
       findData = llist.searchByCode(kode)
@@ -95,6 +100,7 @@ def main():
         print(f'{findData.kode} : {findData.nama}\n')
       else:
         print(f"Pencarian kode {kode} tidak ditemukan\n")
+
     elif aksi == "3": # hapus data
       kode = input("Masukkan kode yang ingin dihapus: ")
       findData = llist.searchByCode(kode)
@@ -103,10 +109,12 @@ def main():
         print(f"Data dengan kode {kode} berhasil dihapus\n")
       else:
         print("Data tidak ditemukan\n")
+
     elif aksi == "4": # tampilkan data
       print("Menampilkan semua data:")
       llist.printList()
       print('')
+
     else: # aksi tidak valid
       print("Pilihan tidak valid\n")
     aksi = pilihAksi()

@@ -66,7 +66,7 @@ def main():
           print('Pilihan tidak valid')
 
 print()
-print("""--- TUGAS 1 NO 4 - IMPLEMENTASI INPUT DINAMIS NAMA DENGAN STACK ---""")
+print("""--- TUGAS 1 NO 3 - IMPLEMENTASI INPUT DINAMIS NAMA DENGAN STACK ---""")
 print("ANGGOTA KELOMPOK 3: ")
 print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
 print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 

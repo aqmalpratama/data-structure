@@ -73,7 +73,7 @@ def main():
       print('Jumlah maksimal mahasiswa harus diisi.')
 
 print()
-print("""---   TUGAS 1 NO 2 - INPUT DAFTAR NAMA DENGAN STACK   ---""")
+print("""---   TUGAS 1 NO X - INPUT DAFTAR NAMA DENGAN STACK   ---""")
 print("ANGGOTA KELOMPOK 3: ")
 print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
 print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 

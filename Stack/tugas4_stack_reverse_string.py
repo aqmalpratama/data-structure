@@ -61,7 +61,7 @@ def main():
         print(f'Pilihan tidak valid')
 
 print()
-print("""---   TUGAS 1 NO 2 - MEMBALIK STRING DENGAN STACK   ---""")
+print("""---   TUGAS 1 NO 5 - MEMBALIK STRING DENGAN STACK   ---""")
 print("ANGGOTA KELOMPOK 3: ")
 print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
 print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 

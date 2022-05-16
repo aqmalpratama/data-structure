@@ -10,7 +10,7 @@ def bubbleSort(arr):
         arr[j + 1] = temp
 
         time.sleep(0.2)
-        print(f'Adanya penukaran antara {arr[j]} dengan {arr[j + 1]}, urutan data menjadi {arr}')
+        print(f'Tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
   return arr
 
 def rev_bubbleSort(arr):
@@ -23,7 +23,7 @@ def rev_bubbleSort(arr):
         arr[j + 1] = temp
 
         time.sleep(0.2)
-        print(f'Adanya penukaran antara {arr[j]} dengan {arr[j + 1]}, urutan data menjadi {arr}')
+        print(f'Tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
   return arr
 
 def pilihAksi():

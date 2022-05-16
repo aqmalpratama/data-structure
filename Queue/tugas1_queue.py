@@ -1,3 +1,10 @@
+# Queue Tugas1 Kelompok 3
+# 1. AKMAL RAFI DIARA PUTRA            - 1313621007
+# 2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005
+# 3. RAWDO MADINA                      - 1313621028
+# 4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034
+# 5. SALWA TSABITAH                    - 1313621042
+
 def createArray():
   arr = []
   return arr

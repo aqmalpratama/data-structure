@@ -62,7 +62,7 @@ def print_data(new_data):
 
 def main():
   print("="*50)
-  print('------------- Program Inplace Sort -------------')
+  print('------------- Program Quick Sort -------------')
   print("="*50)
   print("> Masukkan data angka acak yang ingin diurutkan.")
   print("> Tiap angka dipisah menggunakan Space.")

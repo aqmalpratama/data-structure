@@ -68,7 +68,7 @@ def rev_mergeSort(array):
       array[k] = right[j]
       j += 1
       k += 1
-      
+
   if split == True:
     print(f'Digabung: {array}')
     
@@ -101,7 +101,7 @@ def print_data(new_data):
 
 def main():
   print("="*50)
-  print('------------- Program Inplace Sort -------------')
+  print('------------- Program Merge Sort -------------')
   print("="*50)
   print("> Masukkan data angka acak yang ingin diurutkan.")
   print("> Tiap angka dipisah menggunakan Space.")

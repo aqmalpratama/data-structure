@@ -11,6 +11,19 @@ def shellSort(array):
     gap //= 2
   return array
   
+def rev_shellSort(array):
+  gap = len(array) // 2
+  while gap > 0:
+    for i in range(gap, len(array)):
+      temp = array[i]
+      j = i
+      while j >= gap and array[j - gap] < temp:
+        array[j] = array[j - gap]
+        j -= gap
+      array[j] = temp
+    gap //= 2
+  return array
+
 def pilihAksi():
   print("\nDaftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Perbarui Data\n 4. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
@@ -56,7 +69,7 @@ def main():
         print_data(new_data)
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        shellSort(new_data)
+        rev_shellSort(new_data)
         print('\nHasil pengurutan kebawah: ')
         print_data(new_data)
       elif aksi == "3":

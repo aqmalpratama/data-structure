@@ -27,6 +27,35 @@ def mergeSort(array):
       j += 1
       k += 1
 
+def rev_mergeSort(array):
+  if len(array) > 1:
+    mid = len(array) // 2
+    left = array[:mid]
+    right = array[mid:]
+
+    rev_mergeSort(left)
+    rev_mergeSort(right)
+
+    i = j = k = 0
+    while i < len(left) and j < len(right):
+      if left[i] > right[j]:
+        array[k] = left[i]
+        i += 1
+      else:
+        array[k] = right[j]
+        j += 1
+      k += 1
+
+    while i < len(left):
+      array[k] = left[i]
+      i += 1
+      k += 1
+
+    while j < len(right):
+      array[k] = right[j]
+      j += 1
+      k += 1
+
 def pilihAksi():
   print("\nDaftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Perbarui Data\n 4. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
@@ -72,7 +101,7 @@ def main():
         print_data(new_data)
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        mergeSort(new_data)
+        rev_mergeSort(new_data)
         print('\nHasil pengurutan kebawah: ')
         print_data(new_data)
       elif aksi == "3":

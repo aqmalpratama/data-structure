@@ -13,6 +13,22 @@ def partition(array, low, high):
       array[i], array[j] = array[j], array[i]
   array[i + 1], array[high] = array[high], array[i + 1]
   return i + 1
+
+def rev_quickSort(array, low, high):
+  if low < high:
+    pi = rev_partition(array, low, high)
+    rev_quickSort(array, low, pi - 1)
+    rev_quickSort(array, pi + 1, high)
+
+def rev_partition(array, low, high):
+  pivot = array[high]
+  i = low - 1
+  for j in range(low, high):
+    if array[j] >= pivot:
+      i += 1
+      array[i], array[j] = array[j], array[i]
+  array[i + 1], array[high] = array[high], array[i + 1]
+  return i + 1
   
 def pilihAksi():
   print("\nDaftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Perbarui Data\n 4. Keluar")
@@ -54,12 +70,12 @@ def main():
       aksi = pilihAksi()
       if aksi == "1":
         print("\nMelakukan Proses... ")
-        quickSort(new_data)
+        quickSort(new_data, 0, len(new_data) - 1)
         print('\nHasil pengurutan keatas: ')
         print_data(new_data)
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        quickSort(new_data)
+        rev_quickSort(new_data, 0, len(new_data) - 1)
         print('\nHasil pengurutan kebawah: ')
         print_data(new_data)
       elif aksi == "3":

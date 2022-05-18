@@ -1,9 +1,14 @@
 def mergeSort(array):
+  split = False
   if len(array) > 1:
     mid = len(array) // 2
     left = array[:mid]
     right = array[mid:]
 
+    split = True
+
+    print()
+    print(f'Memecah array: {array} menjadi {left} dan {right}')
     mergeSort(left)
     mergeSort(right)
 
@@ -26,8 +31,12 @@ def mergeSort(array):
       array[k] = right[j]
       j += 1
       k += 1
+  
+  if split == True:
+    print(f'Digabung: {array}')
 
 def rev_mergeSort(array):
+  split = False
   if len(array) > 1:
     mid = len(array) // 2
     left = array[:mid]
@@ -35,6 +44,10 @@ def rev_mergeSort(array):
 
     rev_mergeSort(left)
     rev_mergeSort(right)
+
+    split = True
+    print()
+    print(f'Memecah array: {array} menjadi {left} dan {right}')
 
     i = j = k = 0
     while i < len(left) and j < len(right):
@@ -55,6 +68,10 @@ def rev_mergeSort(array):
       array[k] = right[j]
       j += 1
       k += 1
+      
+  if split == True:
+    print(f'Digabung: {array}')
+    
 
 def pilihAksi():
   print("\nDaftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Perbarui Data\n 4. Keluar")
@@ -62,16 +79,17 @@ def pilihAksi():
   return pilihan
 
 def input_data():
+  # 6 5 3 1 8 7 2 4
   while True:
-      try:
-        angka = input('Masukkan angka: ')
-        data = angka.split(" ")
-        new_data = []
-        for i in range(len(data)):
-          new_data.append(int(data[i]))
-        break
-      except ValueError:
-        print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
+    try:
+      angka = input('Masukkan angka: ')
+      data = angka.split(" ")
+      new_data = []
+      for i in range(len(data)):
+        new_data.append(int(data[i]))
+      break
+    except ValueError:
+      print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
   return new_data
 
 def print_data(new_data):
@@ -99,11 +117,13 @@ def main():
         mergeSort(new_data)
         print('\nHasil pengurutan keatas: ')
         print_data(new_data)
+
       elif aksi == "2":
         print("\nMelakukan Proses... ")
         rev_mergeSort(new_data)
         print('\nHasil pengurutan kebawah: ')
         print_data(new_data)
+
       elif aksi == "3":
         print("\nData sebelumnya: ")
         for i in range(len(new_data)):

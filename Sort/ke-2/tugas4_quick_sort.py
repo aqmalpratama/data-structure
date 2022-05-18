@@ -3,15 +3,19 @@ def quickSort(array, low, high):
     pi = partition(array, low, high)
     quickSort(array, low, pi - 1)
     quickSort(array, pi + 1, high)
+  # print(array)
 
 def partition(array, low, high):
   pivot = array[high]
+  print("Pivot: ", pivot)
   i = low - 1
   for j in range(low, high):
     if array[j] <= pivot:
       i += 1
       array[i], array[j] = array[j], array[i]
+      print(f'swapping element at i: {array[i]} with element at j:{array[j]} => {array}')
   array[i + 1], array[high] = array[high], array[i + 1]
+  print(f'Menukar pivot: {array[i + 1]} dengan data yang lebih besar yang ditentukan oleh i: {array[high]} => {array}')
   return i + 1
 
 def rev_quickSort(array, low, high):
@@ -38,6 +42,7 @@ def pilihAksi():
 def input_data():
   while True:
       try:
+        # 8 7 6 1 0 9 2
         angka = input('Masukkan angka: ')
         data = angka.split(" ")
         new_data = []

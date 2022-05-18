@@ -4,7 +4,7 @@ def inplaceSort(array):
   for i in range(1, len(array)):
     key = array[i]
     j = i - 1
-    while j >= 0 and key < array[j]:
+    while j >= 0 and key < array[j]: # jika key lebih kecil dari array[j] 
       time.sleep(0.2)
       print(f'Kunci sekarang {key}, Tukar {array[j]} dengan {array[j + 1]} => {array}')
       array[j + 1] = array[j]
@@ -31,15 +31,15 @@ def pilihAksi():
 
 def input_data():
   while True:
-      try:
-        angka = input('Masukkan angka: ')
-        data = angka.split(" ")
-        new_data = []
-        for i in range(len(data)):
-          new_data.append(int(data[i]))
-        break
-      except ValueError:
-        print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
+    try:
+      angka = input('Masukkan angka: ')
+      data = angka.split(" ")
+      new_data = []
+      for i in range(len(data)):
+        new_data.append(int(data[i]))
+      break
+    except ValueError:
+      print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
   return new_data
 
 def print_data(new_data):

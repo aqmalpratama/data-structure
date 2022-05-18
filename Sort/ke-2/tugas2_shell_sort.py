@@ -5,6 +5,7 @@ def shellSort(array):
       temp = array[i]
       j = i
       while j >= gap and array[j - gap] > temp:
+        print(f'gap: {gap} | {array[j]} dan {array[j - gap]} ditukar => {array}')
         array[j] = array[j - gap]
         j -= gap
       array[j] = temp
@@ -18,6 +19,7 @@ def rev_shellSort(array):
       temp = array[i]
       j = i
       while j >= gap and array[j - gap] < temp:
+        print(f'gap: {gap} | {array[j]} dan {array[j - gap]} ditukar => {array}')
         array[j] = array[j - gap]
         j -= gap
       array[j] = temp
@@ -31,15 +33,15 @@ def pilihAksi():
 
 def input_data():
   while True:
-      try:
-        angka = input('Masukkan angka: ')
-        data = angka.split(" ")
-        new_data = []
-        for i in range(len(data)):
-          new_data.append(int(data[i]))
-        break
-      except ValueError:
-        print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
+    try:
+      angka = input('Masukkan angka: ')
+      data = angka.split(" ")
+      new_data = []
+      for i in range(len(data)):
+        new_data.append(int(data[i]))
+      break
+    except ValueError:
+      print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
   return new_data
 
 def print_data(new_data):
@@ -51,7 +53,7 @@ def print_data(new_data):
 
 def main():
   print("="*50)
-  print('------------- Program Inplace Sort -------------')
+  print('------------- Program Shell Sort -------------')
   print("="*50)
   print("> Masukkan data angka acak yang ingin diurutkan.")
   print("> Tiap angka dipisah menggunakan Space.")

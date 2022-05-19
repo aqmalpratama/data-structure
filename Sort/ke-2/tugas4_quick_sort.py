@@ -7,13 +7,16 @@ def quickSort(array, low, high):
 
 def partition(array, low, high):
   pivot = array[high]
-  print("Pivot: ", pivot)
+  print("\nPivot: ", pivot)
+  print(array)
   i = low - 1
   for j in range(low, high):
     if array[j] <= pivot:
       i += 1
       array[i], array[j] = array[j], array[i]
-      print(f'swapping element at i: {array[i]} with element at j:{array[j]} => {array}')
+      print(f'Cek: {array[i]} Lebih kecil dari {pivot} dan {array[j]} | Sel Tujuan: {array[j]}')
+      print(array)
+      # print(f'swapping element at i: {array[i]} with element at j:{array[j]} => {array}')
   array[i + 1], array[high] = array[high], array[i + 1]
   print(f'Menukar pivot: {array[i + 1]} dengan data yang lebih besar yang ditentukan oleh i: {array[high]} => {array}')
   return i + 1
@@ -26,12 +29,17 @@ def rev_quickSort(array, low, high):
 
 def rev_partition(array, low, high):
   pivot = array[high]
+  print("\nPivot: ", pivot)
+  print(array)
   i = low - 1
   for j in range(low, high):
     if array[j] >= pivot:
       i += 1
       array[i], array[j] = array[j], array[i]
+      print(f'Cek: {array[i]} lebih besar dari {pivot} dan {array[j]} | Sel Tujuan: {array[j]}')
+      print(array)
   array[i + 1], array[high] = array[high], array[i + 1]
+  print(f'Menukar pivot: {array[i + 1]} dengan data yang lebih besar yang ditentukan oleh i: {array[high]} => {array}')
   return i + 1
   
 def pilihAksi():
@@ -104,3 +112,4 @@ def main():
     print("\n")
 
 main()
+# 8 7 6 1 0 9 2

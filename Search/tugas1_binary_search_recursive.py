@@ -1,12 +1,20 @@
-def linearSearch(array, n, target):
+def binarySearch(array, target, low, high):
+	print()
 	print(f'array: {array}')
-	for i in range(n):
-		print()
-		print(f'Apakah {target} sama dengan {array[i]} ?')
-		if (array[i] == target):
-			return i
-		print(f'ke index berikutnya')	
-	return -1
+	if high >= low:
+		mid = low + (high - low) // 2
+		print(f'low = {low}, high = {high}, target = {target}')
+		print(f'mid = array ke-{mid} = {array[mid]}')
+		if array[mid] == target:
+			return mid
+		elif array[mid] > target:
+			print(f'{array[mid]} lebih besar dari {target}, maka akan mencari di bagian kanan')
+			return binarySearch(array, target, low, mid - 1)
+		else:
+			print(f'{array[mid]} lebih kecil dari {target}, maka akan mencari di bagian kiri')
+			return binarySearch(array, target, mid + 1, high)
+	else:
+		return -1
 
 def pilihanAksi():
   print("\nDaftar Aksi:\n 1. Memasukkan data\n 2. Menghapus data\n 3. Lihat Data\n 4. Temukan Data\n 5. Perbarui Data\n 6. Keluar")
@@ -76,8 +84,9 @@ def main():
 				print('Array kosong. Tidak ada data yang dapat dicari.')
 				main()
 
+			new_data.sort()
 			target = int(input('Masukkan angka yang ingin dicari: '))
-			res = linearSearch(new_data, len(new_data), target)
+			res = binarySearch(new_data, target, 0, len(new_data) - 1)
 			if res == -1:
 				print('Angka tidak ditemukan')
 			else:

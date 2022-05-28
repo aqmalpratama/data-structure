@@ -1,3 +1,5 @@
+import time
+
 class Node:
   def __init__(self, string):
     self.string = string
@@ -8,15 +10,17 @@ class LinkedList:
     self.head = None
 
   def reverseString(self, string):
-    string = string[::-1]
-    new_node = Node(string)
-    if self.head is None:
-      self.head = new_node
-      return
-    last = self.head
-    while (last.next):
-      last = last.next
-    last.next = new_node
+    length = len(string)
+    arr = []
+    for i in range(length):
+      arr.append(string[i])
+    string = ""
+    print("Proses membalik kata atau kalimat")
+    for i in range(length):
+      string += arr.pop()
+      time.sleep(0.2)
+      print(string)
+    return string
   
   def printList(self):
     temp = self.head
@@ -33,10 +37,8 @@ def main():
   while True:
     string = input("Masukkan string: ")
     if string:
-      print('')
-      ll.reverseString(string)
-      print(f'Hasil membalikkan string:')
-      ll.printList()
+      print('\n\n')
+      print(f'String yang telah dibalik: {ll.reverseString(string)}')
       print('')
       break
     else:

@@ -58,12 +58,6 @@ def pilihAksi():
 def main():
   print()
   print("""---   TUGAS 2 NO 4 - IMPLEMENTASI INPUT 2 DATA(KODE DAN NAMA) DENGAN LINKED LIST   ---""")
-  print("ANGGOTA KELOMPOK 3: ")
-  print("1. AKMAL RAFI DIARA PUTRA            - 1313621007") 
-  print("2. MUHAMMAD AQMAL KHAFIDZ PRATAMA    - 1313621005") 
-  print("3. RAWDO MADINA                      - 1313621028") 
-  print("4. RADEN RORO ZIVA AZZAHRAH KHALILA  - 1313621034") 
-  print("5. SALWA TSABITAH                    - 1313621042") 
 
   llist = LinkedList()
   print("\n* Format Pengisian Data*\nKode harus 3 huruf kapital\nNama harus diawali dengan kapital\n")

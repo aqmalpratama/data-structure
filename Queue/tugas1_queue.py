@@ -12,7 +12,7 @@ def createArray():
 def addItem(arr, item):
   arr.append(item)
 
-def removeItem(arr, item):
+def removeItem(arr):
   return arr.pop(0)
 
 def sizeArray(arr):

@@ -1,3 +1,4 @@
+from structlinks.DataStructures import BinarySearchTree
 class BSTNode:
 	def __init__(self, val=None):
 		self.left = None
@@ -106,7 +107,7 @@ def pilihAksi():
 def main():
 	print('------ Program BST------')
 	print('* CATATAN *')
-	print('Mohon masukkan angka dengan tanda koma sebagai pemisah.\nJika dirasa sudah cukup, maka tekan enter untuk melakukan proses pengurutan angka.')
+	print('Mohon masukkan angka dengan tanda koma sebagai pemisah.\nJika dirasa sudah cukup, maka tekan enter untuk ke proses selanjutnya.')
 	print('Contoh memasukkan angka : 12, 6, 18, 19, 21, 11, 3, 5, 4, 24, 18')
 
 	angka = input('Masukkan beberapa angka acak: ')
@@ -114,11 +115,15 @@ def main():
 	nums = []
 	for i in range(len(data)):
 		nums.append(int(data[i]))
-	# nums = [12, 6, 18, 19, 21, 11, 3, 5, 4, 24, 18]
+
 	bst = BSTNode()
 	for num in nums:
 			bst.insert(num)
 	
+	print('\nBinary Search Tree:')
+	tree = BinarySearchTree.create_tree(nums)
+	print(tree)
+
 	run = True
 	while run:
 		pilihan = pilihAksi()

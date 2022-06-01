@@ -1,24 +1,46 @@
 import time
 def selectionSort(array):
+  print(f'Array awal: {array}')
   for i in range(len(array)):
     min_index = i
+    swapping = False
+    print(f'first minimum: {array[min_index]}')
     for j in range(i + 1, len(array)):
+      print(f'Apakah {array[j]} < {array[min_index]} ?')
       if array[j] < array[min_index]:
         min_index = j
-      time.sleep(0.2)
-      print(array)
+        swapping = True
+        print(f'Ya, maka nilai minimum sekarang: {array[min_index]}')
+      else:
+        print(f'Tidak, maka nilai minimum tidak berubah: {array[min_index]}')
     array[i], array[min_index] = array[min_index], array[i]
+    if swapping:
+      print(f'tukar {array[i]} dengan {array[min_index]} => {array}')
+    else:
+      print(f'Tidak ada yang ditukar, maka {array}')
+    print()
   return array
 
 def rev_selectionSort(array):
+  print(f'Array awal: {array}')
   for i in range(len(array)):
     min_index = i
+    swapping = False
+    print(f'first minimum: {array[min_index]}')
     for j in range(i + 1, len(array)):
+      print(f'Apakah {array[j]} > {array[min_index]} ?')
       if array[j] > array[min_index]:
         min_index = j
-      time.sleep(0.2)
-      print(array)
+        swapping = True
+        print(f'Ya, maka nilai minimum sekarang: {array[min_index]}')
+      else:
+        print(f'Tidak, maka nilai minimum tidak berubah: {array[min_index]}')
     array[i], array[min_index] = array[min_index], array[i]
+    if swapping:
+      print(f'tukar {array[i]} dengan {array[min_index]} => {array}')
+    else:
+      print(f'Tidak ada yang ditukar, maka {array}')
+    print()
   return array
 
 def pilihAksi():
@@ -32,12 +54,16 @@ def input_data():
         angka = input('Masukkan angka: ')
         data = angka.split(" ")
         new_data = []
+        store_1 = []
+        store_2 = []
         for i in range(len(data)):
           new_data.append(int(data[i]))
+          store_1.append(int(data[i]))
+          store_2.append(int(data[i]))
         break
       except ValueError:
         print("> Oops! Data yang dimasukkan tidak valid. Coba lagi...\n")
-  return new_data
+  return {'data': new_data, 'store_1': store_1, 'store_2': store_2}
 
 def print_data(new_data):
   for i in range(len(new_data)):
@@ -55,20 +81,23 @@ def main():
   print("="*50, "\n")
   state_try = True
   while state_try:
-    new_data = input_data()
+    data = input_data()
+    new_data = data['data']
+    store_1 = data['store_1']
+    store_2 = data['store_2']
     clear = True
     while clear:
       aksi = pilihAksi()
       if aksi == "1":
         print("\nMelakukan Proses... ")
-        selectionSort(new_data)
-        print('\nHasil pengurutan keatas: ')
-        print_data(new_data)
+        selectionSort(store_1)
+        print('Hasil pengurutan keatas: ')
+        print_data(store_1)
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        rev_selectionSort(new_data)
-        print('\nHasil pengurutan kebawah: ')
-        print_data(new_data)
+        rev_selectionSort(store_2)
+        print('Hasil pengurutan kebawah: ')
+        print_data(store_2)
       elif aksi == "3":
         print("\nData sebelumnya: ")
         for i in range(len(new_data)):
@@ -77,7 +106,10 @@ def main():
           else:
             print(new_data[i])
         print("\nPerbarui data")
-        new_data = input_data()
+        data = input_data()
+        new_data = data['data']
+        store_1 = data['store_1']
+        store_2 = data['store_2']
         print("\n> Data berhasil diperbarui!")
       elif aksi == "4":
         clear = False

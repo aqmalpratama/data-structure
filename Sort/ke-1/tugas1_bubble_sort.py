@@ -1,29 +1,51 @@
 import time
-# Optimized Bubble sort in Python
+
 def bubbleSort(arr):
   n = len(arr)
+  print(f'array: {arr}')
   for i in range(n):
+    swapping = False
     for j in range(0, n - i - 1):
+      print(f'step = {i+1}, i = {j}')
+      print(f'Apakah {arr[j]} > {arr[j + 1]} ?')
+
       if arr[j] > arr[j + 1] :
         temp = arr[j]
         arr[j] = arr[j + 1]
         arr[j + 1] = temp
-
+        swapping = True
         time.sleep(0.2)
-        print(f'Tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
+        print(f'Ya, maka tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
+      else:
+        print(f'Tidak, maka tidak melakukan pertukaran')
+      print()
+
+    if not swapping:
+      break
   return arr
 
 def rev_bubbleSort(arr):
   n = len(arr)
-  for i in range(n):
-    for j in range(0, n - i - 1):
+  print(f'array: {arr}')
+  for i in range(n): # loop setiap elemen array
+    swapping = False
+    for j in range(0, n - i - 1): # loop untuk bandingkan elemen array
+      print(f'step = {i+1}, i = {j}')
+      print(f'Apakah {arr[j]} < {arr[j + 1]} ?')
+
       if arr[j] < arr[j + 1] :
         temp = arr[j]
         arr[j] = arr[j + 1]
         arr[j + 1] = temp
-
+        swapping = True
         time.sleep(0.2)
-        print(f'Tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
+        print(f'Ya, maka tukar {arr[j]} dengan {arr[j + 1]} => {arr}')
+      else:
+        print(f'Tidak, maka tidak melakukan pertukaran')
+      print()
+      
+    if not swapping:
+      break
   return arr
 
 def pilihAksi():
@@ -41,29 +63,33 @@ def main():
     angka = input('Masukkan beberapa angka acak yang akan diurutkan: ')
     data = angka.split(", ")
     new_data = []
+    store_1 = []
+    store_2 = []
     for i in range(len(data)):
       new_data.append(int(data[i]))
-
+      store_1.append(int(data[i]))
+      store_2.append(int(data[i]))
+# -2, 45, 0, 11, -9
     clear = True
     while clear:
       aksi = pilihAksi()
       if aksi == "1":
-        bubbleSort(new_data)
-        print('\nHasil pengurutan keatas: ')
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=", ")
+        bubbleSort(store_1)
+        print('Hasil pengurutan keatas: ')
+        for i in range(len(store_1)):
+          if i != len(store_1) - 1:
+            print(store_1[i], end=", ")
           else:
-            print(new_data[i])
+            print(store_1[i])
       
       elif aksi == "2":
-        rev_bubbleSort(new_data)
+        rev_bubbleSort(store_2)
         print('Hasil pengurutan kebawah: ')
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=", ")
+        for i in range(len(store_2)):
+          if i != len(store_2) - 1:
+            print(store_2[i], end=", ")
           else:
-            print(new_data[i])
+            print(store_2[i])
       
       elif aksi == "3":
         clear = False

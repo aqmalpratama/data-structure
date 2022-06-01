@@ -1,30 +1,41 @@
 import time
 def insertionSort(array):
+  print('Proses pengurutan ke atas: ')
   for i in range(1, len(array)):
     key = array[i]
     j = i - 1
+
+    print(f'key: {key}')
+    print(array)
     while j >= 0 and key < array[j]:
       time.sleep(0.2)
-      print(array)
       array[j + 1] = array[j]
+      temp = array[j + 1]
+      print(array)
       j -= 1
     array[j + 1] = key
+    print(f'Pindahkan {array[j + 1]} setelah {array[j]} => {array}\n')
   return array
 
 def rev_insertionSort(array):
+  print('Proses pengurutan ke bawah: ')
   for i in range(1, len(array)):
     key = array[i]
     j = i - 1
+    print(f'key: {key}')
+    print(array)
     while j >= 0 and key > array[j]:
       time.sleep(0.2)
-      print(array)
       array[j + 1] = array[j]
+      temp = array[j + 1]
+      print(array)
       j -= 1
     array[j + 1] = key
+    print(f'Pindahkan {array[j + 1]} setelah {array[j]} => {array}\n')
   return array
 
 def pilihAksi():
-  print("Daftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Keluar")
+  print("\nDaftar Aksi:\n 1. Mengurutkan Ke atas\n 2. Mengurutkan Ke bawah\n 3. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, atau 3): ")
   return pilihan
 
@@ -36,29 +47,34 @@ def main():
   state_try = True
   while state_try:
     angka = input('Masukkan beberapa angka acak yang akan diurutkan: ')
+    # 9, 5, 1, 4, 3
     data = angka.split(", ")
     new_data = []
+    store_1 = []
+    store_2 = []
     for i in range(len(data)):
       new_data.append(int(data[i]))
+      store_1.append(int(data[i]))
+      store_2.append(int(data[i]))
     clear = True
     while clear:
       aksi = pilihAksi()
       if aksi == "1":
-        insertionSort(new_data)
+        insertionSort(store_1)
         print('Hasil pengurutan keatas: ')
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=", ")
+        for i in range(len(store_1)):
+          if i != len(store_1) - 1:
+            print(store_1[i], end=", ")
           else:
-            print(new_data[i])
+            print(store_1[i])
       elif aksi == "2":
-        rev_insertionSort(new_data)
+        rev_insertionSort(store_2)
         print('Hasil pengurutan kebawah: ')
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=", ")
+        for i in range(len(store_2)):
+          if i != len(store_2) - 1:
+            print(store_2[i], end=", ")
           else:
-            print(new_data[i])
+            print(store_2[i])
       elif aksi == "3":
         clear = False
       else:

@@ -1,27 +1,37 @@
 import time
 
 def inplaceSort(array):
-  for i in range(1, len(array)):
-    key = array[i]
-    j = i - 1
-    while j >= 0 and key < array[j]: # jika key lebih kecil dari array[j] 
-      # time.sleep(0.2)
-      print(f'Kunci sekarang {key}, Tukar {array[j]} dengan {array[j + 1]} => {array}')
-      array[j + 1] = array[j]
-      j -= 1
-    array[j + 1] = key
+  print(f'array awal: {array}')
+  n = len(array)
+  for i in range(n - 1):
+    maximum = array[n - i - 1]
+    maximum_idx = 0
+    for j in range(n - i - 1):
+      if array[j] > maximum:
+        maximum = array[j]
+        maximum_idx = j
+
+    if not array[n - i - 1] > array[maximum_idx]:
+      array[n - i - 1], array[maximum_idx] = array[maximum_idx], array[n - i - 1]
+      print(f"{array[n - i - 1]} ditukar dengan {array[maximum_idx]} => {array}")
+  print()
   return array
 
 def rev_inplaceSort(array):
-  for i in range(1, len(array)):
-    key = array[i]
-    j = i - 1
-    while j >= 0 and key > array[j]:
-      # time.sleep(0.2)
-      print(f'Kunci sekarang {key}, Tukar {array[j]} dengan {array[j + 1]} => {array}')
-      array[j + 1] = array[j]
-      j -= 1
-    array[j + 1] = key
+  print(f'array awal: {array}')
+  n = len(array)
+  for i in range(n - 1):
+    maximum = array[n - i - 1]
+    maximum_idx = 0
+    for j in range(n - i - 1):
+      if array[j] < maximum:
+        maximum = array[j]
+        maximum_idx = j
+
+    if not array[n - i - 1] < array[maximum_idx]:
+      array[n - i - 1], array[maximum_idx] = array[maximum_idx], array[n - i - 1]
+      print(f"{array[n - i - 1]} ditukar dengan {array[maximum_idx]} => {array}")
+  print()
   return array
 
 def pilihAksi():
@@ -68,13 +78,13 @@ def main():
       if aksi == "1":
         print("\nMelakukan Proses... ")
         inplaceSort(state_data)
-        print('\nHasil pengurutan keatas: ')
+        print('Hasil pengurutan keatas: ')
         print_data(state_data)
         state_data = original_data
       elif aksi == "2":
         print("\nMelakukan Proses... ")
         rev_inplaceSort(state_data)
-        print('\nHasil pengurutan kebawah: ')
+        print('Hasil pengurutan kebawah: ')
         print_data(state_data)
         state_data = original_data
       elif aksi == "3":

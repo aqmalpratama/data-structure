@@ -72,14 +72,12 @@ def rev_mergeSort(array):
   if split == True:
     print(f'Digabung: {array}')
     
-
 def pilihAksi():
   print("\nDaftar Aksi:\n 1. Mengurutkan Keatas\n 2. Mengurutkan Kebawah\n 3. Perbarui Data\n 4. Keluar")
   pilihan = input("Masukkan pilihan Anda (1, 2, 3, atau 4): ")
   return pilihan
 
 def input_data():
-  # 6 5 3 1 8 7 2 4
   while True:
     try:
       angka = input('Masukkan angka: ')

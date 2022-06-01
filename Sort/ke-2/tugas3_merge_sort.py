@@ -108,31 +108,34 @@ def main():
   print("="*50, "\n")
   state_try = True
   while state_try:
-    new_data = input_data()
+    original_data = input_data()
     clear = True
     while clear:
+      state_data = []
+      for i in range(len(original_data)):
+        state_data.append(original_data[i])
       aksi = pilihAksi()
       if aksi == "1":
         print("\nMelakukan Proses... ")
-        mergeSort(new_data)
+        mergeSort(state_data)
         print('\nHasil pengurutan keatas: ')
-        print_data(new_data)
-
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        rev_mergeSort(new_data)
+        rev_mergeSort(state_data)
         print('\nHasil pengurutan kebawah: ')
-        print_data(new_data)
-
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "3":
         print("\nData sebelumnya: ")
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=" ")
+        for i in range(len(original_data)):
+          if i != len(original_data) - 1:
+            print(original_data[i], end=" ")
           else:
-            print(new_data[i])
+            print(original_data[i])
         print("\nPerbarui data")
-        new_data = input_data()
+        original_data = input_data()
         print("\n> Data berhasil diperbarui!")
       elif aksi == "4":
         clear = False

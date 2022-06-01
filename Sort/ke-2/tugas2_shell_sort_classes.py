@@ -67,29 +67,34 @@ def main():
   sorting = shellsort()
   state_try = True
   while state_try:
-    new_data = input_data()
+    original_data = input_data()
     clear = True
     while clear:
+      state_data = []
+      for i in range(len(original_data)):
+        state_data.append(original_data[i])
       aksi = pilihAksi()
       if aksi == "1":
         print("\nMelakukan Proses... ")
-        sorting.asc(new_data)
+        sorting.asc(state_data)
         print('\nHasil pengurutan keatas: ')
-        print_data(new_data)
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        sorting.desc(new_data)
+        sorting.desc(state_data)
         print('\nHasil pengurutan kebawah: ')
-        print_data(new_data)
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "3":
         print("\nData sebelumnya: ")
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=" ")
+        for i in range(len(original_data)):
+          if i != len(original_data) - 1:
+            print(original_data[i], end=" ")
           else:
-            print(new_data[i])
+            print(original_data[i])
         print("\nPerbarui data")
-        new_data = input_data()
+        original_data = input_data()
         print("\n> Data berhasil diperbarui!")
       elif aksi == "4":
         clear = False

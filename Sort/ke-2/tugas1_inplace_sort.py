@@ -5,7 +5,7 @@ def inplaceSort(array):
     key = array[i]
     j = i - 1
     while j >= 0 and key < array[j]: # jika key lebih kecil dari array[j] 
-      time.sleep(0.2)
+      # time.sleep(0.2)
       print(f'Kunci sekarang {key}, Tukar {array[j]} dengan {array[j + 1]} => {array}')
       array[j + 1] = array[j]
       j -= 1
@@ -17,7 +17,7 @@ def rev_inplaceSort(array):
     key = array[i]
     j = i - 1
     while j >= 0 and key > array[j]:
-      time.sleep(0.2)
+      # time.sleep(0.2)
       print(f'Kunci sekarang {key}, Tukar {array[j]} dengan {array[j + 1]} => {array}')
       array[j + 1] = array[j]
       j -= 1
@@ -58,29 +58,34 @@ def main():
   print("="*50, "\n")
   state_try = True
   while state_try:
-    new_data = input_data()
+    original_data = input_data()
     clear = True
     while clear:
+      state_data = []
+      for i in range(len(original_data)):
+        state_data.append(original_data[i])
       aksi = pilihAksi()
       if aksi == "1":
         print("\nMelakukan Proses... ")
-        inplaceSort(new_data)
+        inplaceSort(state_data)
         print('\nHasil pengurutan keatas: ')
-        print_data(new_data)
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "2":
         print("\nMelakukan Proses... ")
-        rev_inplaceSort(new_data)
+        rev_inplaceSort(state_data)
         print('\nHasil pengurutan kebawah: ')
-        print_data(new_data)
+        print_data(state_data)
+        state_data = original_data
       elif aksi == "3":
         print("\nData sebelumnya: ")
-        for i in range(len(new_data)):
-          if i != len(new_data) - 1:
-            print(new_data[i], end=" ")
+        for i in range(len(original_data)):
+          if i != len(original_data) - 1:
+            print(original_data[i], end=" ")
           else:
-            print(new_data[i])
+            print(original_data[i])
         print("\nPerbarui data")
-        new_data = input_data()
+        original_data = input_data()
         print("\n> Data berhasil diperbarui!")
       elif aksi == "4":
         clear = False
